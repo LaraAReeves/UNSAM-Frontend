@@ -1,4 +1,4 @@
-import LoginForm from '.login/LoginForm';
+import LoginForm from './app/login/LoginForm';
 
 function App() {
   return (
