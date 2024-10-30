@@ -1,9 +1,13 @@
-import LoginForm from './app/login/LoginForm';
+import LoginForm from "./app/login/LoginForm";
+import Header from "./Header";
+import Footer from "./Footer";
 
 function App() {
   return (
-    <div>
-      <LoginForm/>
+    <div className="background">
+      <Header />
+      <LoginForm />
+      <Footer />
     </div>
   );
 }
