@@ -29,7 +29,7 @@ return (
 
         <div className="register-link">
         <p>
-            ¿No tenés una cuenta?
+            ¿No tenés una cuenta? 
             <a onClick={toggleForm}>Registrate</a>
         </p>
         </div>

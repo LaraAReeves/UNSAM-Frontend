@@ -28,7 +28,7 @@ return (
 
         <div className="register-link">
         <p>
-            ¿Ya tenés una cuenta?
+            ¿Ya tenés una cuenta? 
             <a href="#" onClick={toggleForm}>
             Iniciá sesión
             </a>
