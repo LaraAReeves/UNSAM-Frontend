@@ -2,7 +2,7 @@ import React from "react";
 import "./LoginForm.css";
 import { FaUser, FaLock } from "react-icons/fa";
 
-const LoginForm = ({ toggleForm }) => {
+const LoginForm = ({ toggleForm, toggleForgotPassword }) => {
 return (
     <div className="wrapper">
     <form action="">
@@ -20,20 +20,17 @@ return (
             <input type="checkbox" />
             Recordar nombre de usuario
         </label>
-        <a href="#">¿Olvidó su contraseña?</a>
+        <a href="#" onClick={toggleForgotPassword}>
+            ¿Olvidó su contraseña?
+        </a>
         </div>
 
         <button type="submit">Acceder</button>
 
         <div className="register-link">
         <p>
-            ¿No tenés una cuenta?{" "}
-            <span
-            onClick={toggleForm}
-            style={{ color: "blue", cursor: "pointer" }}
-            >
-            Registrate
-            </span>
+            ¿No tenés una cuenta?
+            <a onClick={toggleForm}>Registrate</a>
         </p>
         </div>
     </form>
