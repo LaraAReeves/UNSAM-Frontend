@@ -1,13 +1,24 @@
+import React, { useState } from "react";
 import LoginForm from "./app/login/LoginForm";
-import Header from "./Header";
-import Footer from "./Footer";
+import RegisterForm from "./app/registro/RegisterForm";
+import Header from "./app/login/Header";
+import Footer from "./app/login/Footer";
 
 function App() {
+  const [isLogin, setIsLogin] = useState(true);
+
+  const toggleForm = () => {
+    setIsLogin(!isLogin);
+  };
+
   return (
     <div className="background">
-      <h1>Bienvenido a (inserte nombre de la página)</h1>
       <Header />
-      <LoginForm />
+      {isLogin ? (
+        <LoginForm toggleForm={toggleForm} />
+      ) : (
+        <RegisterForm toggleForm={toggleForm} />
+      )}
       <Footer />
     </div>
   );
