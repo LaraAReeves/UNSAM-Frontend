@@ -27,7 +27,7 @@ const RegisterForm = () => {
                 <button type='submit'>Registrarse</button>
 
                 <div className="register-link">
-                    <p>¿Ya tienes una cuenta? <a href="#">Inicia sesión</a></p>
+                    <p>¿Ya tenés una cuenta? <a href="#">Iniciá sesión</a></p>
                 </div>
             </form>
         </div>
