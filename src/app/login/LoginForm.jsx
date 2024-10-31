@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LoginForm.css";
 import { FaUser, FaLock } from "react-icons/fa";
 
 const LoginForm = ({ toggleForm, toggleForgotPassword }) => {
+const [passwordVisible, setPasswordVisible] = useState(false);
+const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+};
+
 return (
     <div className="wrapper">
     <form action="">
@@ -12,8 +17,17 @@ return (
         <FaUser className="icon" />
         </div>
         <div className="input-box">
-        <input type="password" placeholder="Contraseña" required />
-        <FaLock className="icon" />
+        <input
+            type={passwordVisible ? "text" : "password"}
+            placeholder="Contraseña"
+            required
+        />
+        <FaLock
+            className="icon"
+            onClick={togglePasswordVisibility}
+            style={{ cursor: "pointer" }}
+        />{" "}
+          {/* Icono para alternar */}
         </div>
         <div className="remember-forgot">
         <label>
@@ -29,7 +43,7 @@ return (
 
         <div className="register-link">
         <p>
-            ¿No tenés una cuenta? 
+            ¿No tenés una cuenta?
             <a onClick={toggleForm}>Registrate</a>
         </p>
         </div>
