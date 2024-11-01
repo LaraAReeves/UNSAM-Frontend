@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./app/assets/logo-ciencia-tecnologia.png";
+import logo from "/src/app/assets/logo-ciencia-tecnologia.png";
 
 const Header = () => {
 return (
