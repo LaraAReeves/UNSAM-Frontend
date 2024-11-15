@@ -16,7 +16,8 @@ let unsamTheme = createTheme({
     },
     secondary: {
       main:'#DEECF3' /*Gris clarito complementario, puede cambiar*/
-    }
+    },
+    tonalOffset: 0.1
   }
 })
 unsamTheme = responsiveFontSizes(unsamTheme)
