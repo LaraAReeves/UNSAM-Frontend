@@ -7,7 +7,7 @@ import NotFound from './components/pages/notFound/NotFound'
 
 export const router = createBrowserRouter([
     { path: '/login', element: <Login /> },
-    /*{ path: '/register', element: <Register /> },*/
+    { path: '/register', element: <Register /> },
     {
         path: '/',
         element: <Main />,
