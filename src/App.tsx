@@ -8,7 +8,7 @@ import '@fontsource/roboto/700.css'
 function App() {
   return (
     <>
-      <Button variant="contained">Clickeame!!!</Button>
+      <Button variant="contained" color="primary">Clickeame!!!</Button>
     </>
   )
 }
