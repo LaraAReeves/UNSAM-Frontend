@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import { ReactNode } from "react";
 
-export function TransparentContainer( {children, padding}: {children: ReactNode, padding:string}) {
+export function TransparentContainer( {children, padding}: {children: ReactNode, padding: string}) {
   return(
     <Box
       sx={{
