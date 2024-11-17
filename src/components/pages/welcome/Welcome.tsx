@@ -1,7 +1,19 @@
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
-import { ContenedorTransparente } from '../../ui/ContenedorTransparente'
+import { TransparentContainer } from '../../ui/TransparentContainer'
+import { useNavigate } from 'react-router-dom'
 
 export function Welcome() {
+  const navigate = useNavigate()
+
+  const navigateToLogin = () => {
+    navigate('/login')
+  }
+
+  const navigateToRegister = () => {
+    navigate('/register')
+  }
+
+
   return (
     <Box
       sx={{
@@ -38,13 +50,13 @@ export function Welcome() {
         />
       </Container>
 
-      <ContenedorTransparente padding='1.5rem'>
+      <TransparentContainer padding='1.5rem'>
         <Stack spacing={2} direction='column' width='100%'>
           <Button
             variant="contained"
             color="primary"
             size="large"
-            href="/login"
+            onClick={navigateToLogin}
           >
             Iniciá sesión
           </Button>
@@ -52,17 +64,17 @@ export function Welcome() {
             variant="outlined"
             color="primary"
             size="large"
-            href="/register"
+            onClick={navigateToRegister}
           >
             Registrate
           </Button>
         </Stack>
-      </ContenedorTransparente>
-      <ContenedorTransparente padding='0.9rem'>
+      </TransparentContainer>
+      <TransparentContainer padding='0.9rem'>
         <Typography color="#000000">
         ¡Informate sobre tus materias, aulas y profesores!
         </Typography>
-      </ContenedorTransparente>
+      </TransparentContainer>
     </Box>
   )
 }
