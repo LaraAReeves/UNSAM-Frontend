@@ -5,15 +5,6 @@ import { useNavigate } from 'react-router-dom'
 export function Welcome() {
   const navigate = useNavigate()
 
-  const navigateToLogin = () => {
-    navigate('/login')
-  }
-
-  const navigateToRegister = () => {
-    navigate('/register')
-  }
-
-
   return (
     <Box
       sx={{
@@ -56,7 +47,7 @@ export function Welcome() {
             variant="contained"
             color="primary"
             size="large"
-            onClick={navigateToLogin}
+            onClick={() => navigate('/login')}
           >
             Iniciá sesión
           </Button>
@@ -64,7 +55,7 @@ export function Welcome() {
             variant="outlined"
             color="primary"
             size="large"
-            onClick={navigateToRegister}
+            onClick={() => navigate('/register')}
           >
             Registrate
           </Button>
