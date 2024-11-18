@@ -4,8 +4,10 @@ import Main from './components/pages/main/Main'
 import Map from './components/pages/main/map/Map'
 import Register from './components/pages/register/Register'
 import NotFound from './components/pages/notFound/NotFound'
+import { Welcome } from './components/pages/welcome/Welcome'
 
 export const router = createBrowserRouter([
+    { path: '/welcome', element: <Welcome />},
     { path: '/login', element: <Login /> },
     { path: '/register', element: <Register /> },
     {
