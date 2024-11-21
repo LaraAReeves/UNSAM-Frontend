@@ -18,14 +18,6 @@ export default function Register() {
   const [submitError, setSubmitError] = useState<string | null>(null)
   const navigate = useNavigate()
 
-  const navigateToLogin = () => {
-    navigate('/login')
-  }
-
-  const navigateToMain = () => {
-    navigate('/')
-  }
-
   const {
     control,
     handleSubmit,
@@ -66,7 +58,7 @@ export default function Register() {
       */
       setIsSubmitted(true)
       setSubmitError(null)
-      navigateToMain()
+      navigate('/')
     } catch (error) {
       setSubmitError('Error al registrar usuario. Por favor intente nuevamente.')
     }
@@ -248,7 +240,7 @@ export default function Register() {
             </Button>
 
             <Typography>
-              ¿Ya tenés una cuenta? <Link onClick={navigateToLogin}>Iniciá sesión.</Link>
+              ¿Ya tenés una cuenta? <Link onClick={() => (navigate('/login'))}>Iniciá sesión.</Link>
             </Typography>
           </Box>
         </Box>
