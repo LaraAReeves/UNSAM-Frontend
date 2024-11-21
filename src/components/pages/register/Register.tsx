@@ -49,8 +49,8 @@ export default function Register() {
 
   const onSubmit = async (userData: FormInputs) => {
     try {
-      const newUser = createAccount(userData)
-      console.log('User data:', newUser)
+      const newAccount = createAccount(userData)
+      console.log('User data:', newAccount)
       /*
        Se debería enviar este usuario a través
        del servicio de autenticación, con algún método como RegistrarUsuario,
