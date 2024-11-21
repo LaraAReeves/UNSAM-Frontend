@@ -7,7 +7,8 @@ import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material'
 let unsamTheme = createTheme({
   typography: {
     fontFamily: [
-      'Saira' /*Fuente que usa la UNSAM*/
+      'Saira', /*Fuente que usa la UNSAM*/
+      'sans-serif'
     ].join(','),
   },
   palette: {
