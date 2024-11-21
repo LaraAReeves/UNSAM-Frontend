@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 import Login from './components/pages/login/Login'
 import Main from './components/pages/main/Main'
 import Map from './components/pages/main/map/Map'
@@ -17,5 +17,6 @@ export const router = createBrowserRouter([
             { path: '/', element: <Map /> },
         ],
         errorElement: <NotFound />
-    }
+    },
+    { path:'*', element: <Navigate to="/welcome" replace />}, /*Ahora escribir una ruta falopa te redirige a la pantalla de bienvenida.*/
 ])
