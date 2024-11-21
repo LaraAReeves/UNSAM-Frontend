@@ -11,15 +11,26 @@ let unsamTheme = createTheme({
       'sans-serif'
     ].join(','),
   },
-  palette: {
-    primary: {
-      main:'#7DA1C4' /*Pantone 645 como indica la UNSAM, si cambia es por el color primario de la ECYT, sino no tocar.*/
+  colorSchemes: {
+    light: {
+      palette: {
+        primary: {
+          main:'#7DA1C4' /*Pantone 645 como indica la UNSAM, si cambia es por el color primario de la ECYT, sino no tocar.*/
+        },
+        secondary: {
+          main:'#DEECF3' /*Gris clarito complementario, puede cambiar*/
+        },
+        tonalOffset: 0.1
+      }
     },
-    secondary: {
-      main:'#DEECF3' /*Gris clarito complementario, puede cambiar*/
-    },
-    tonalOffset: 0.1
-  }
+    dark: {
+      palette: {
+        primary: {
+          main:'#7DA1C4'
+        }
+      }
+    }
+  },
 })
 unsamTheme = responsiveFontSizes(unsamTheme)
 
