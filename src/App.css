@@ -1,5 +1,4 @@
 #root {
-  ;
   width: 100vw;
   margin: 0 auto;
   text-align: center;
@@ -18,10 +17,28 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
-h1{
+h1,h2,h3,h4,h5,h6,p{
     font-size: 1rem;
     margin: 0;
     padding: 0;
+}
+h2{
+    font-size: 0.9rem;
+}
+h3{
+    font-size: 0.8rem;
+}
+h4{
+    font-size: 0.7rem;
+}
+h5{
+    font-size: 0.6rem;
+}
+h6{
+    font-size: 0.5rem;
+}
+p{
+    font-size: 0.4rem;
 }
 
 @keyframes logo-spin {
