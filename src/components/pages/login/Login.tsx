@@ -1,5 +1,5 @@
 import { useForm, Controller } from 'react-hook-form'
-import { TextField, Button, Box, Container } from '@mui/material'
+import { TextField, Button, Box, } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
@@ -53,7 +53,7 @@ export default function Login() {
                         label="Email"
                         variant="outlined"
                         error={!!errors.email}
-                        helperText={errors.email?.message}
+                        helperText={errors.email?.message ? String(errors.email?.message) : ''}
                         fullWidth
                     />
                 )}
@@ -78,7 +78,7 @@ export default function Login() {
                         type="password"
                         variant="outlined"
                         error={!!errors.password}
-                        helperText={errors.password?.message}
+                        helperText={errors.password?.message? String(errors.password?.message) : ''}
                         fullWidth
                     />
                 )}
