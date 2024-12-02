@@ -33,7 +33,7 @@ export default function Login() {
                 alt="Logo UNSAM"
                 style={{width: '100%', marginBottom: '20px'}}
             />
-            <h1>Login</h1>
+            <h1>Tornaguía</h1>
 
             {/* Email Field */}
             <Controller
