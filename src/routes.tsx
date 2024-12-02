@@ -5,6 +5,8 @@ import Map from './components/pages/main/map/Map'
 import Register from './components/pages/register/Register'
 import NotFound from './components/pages/notFound/NotFound'
 import { Welcome } from './components/pages/welcome/Welcome'
+import {ProtectedRoute} from "./components/common/ProtectedRoute.tsx";
+
 
 export const router = createBrowserRouter([
     { path: '/welcome', element: <Welcome />},
@@ -12,7 +14,10 @@ export const router = createBrowserRouter([
     { path: '/register', element: <Register /> },
     {
         path: '/',
-        element: <Main />,
+        element:
+            <ProtectedRoute>
+                <Main />
+            </ProtectedRoute>,
         children: [
             { path: '/', element: <Map /> },
         ],
