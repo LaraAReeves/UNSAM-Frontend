@@ -1,19 +1,32 @@
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
-import { TextField, Button, Box, } from '@mui/material'
+import { TextField, Button, Box, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, FormHelperText, } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import {useAuth} from "../../../context/AuthContext.tsx";
 import { LoginRequest } from '../../../data/domain/User.ts';
+import { VisibilityOff, Visibility } from '@mui/icons-material';
+import React from 'react';
 
 export default function Login() {
     const { control, handleSubmit, formState: { errors } } = useForm<LoginRequest>()
     const { login } = useAuth()
     const navigate = useNavigate()
-
+    const [showPassword, setShowPassword] = React.useState(false);
+    
     const onSubmit : SubmitHandler<LoginRequest> = (data) => {
         console.log('Login Data:', data)
         // Redirigir a la ruta "/"
         login()
         navigate('/')
+    }
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show)
+
+    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault()
+    }
+  
+    const handleMouseUpPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault()
     }
 
     return (
@@ -72,19 +85,40 @@ export default function Login() {
                     required: 'Debe ingresar una contraseña',
                     minLength: {
                         value: 6,
-                        message: 'La contraseña debe tener al menos 8 caracteres',
+                        message: 'La contraseña debe tener al menos 6 caracteres',
                     },
                 }}
                 render={({field}) => (
-                    <TextField
-                        {...field}
-                        label="Password"
-                        type="password"
-                        variant="outlined"
-                        error={!!errors.password}
-                        helperText={errors.password?.message? String(errors.password?.message) : ''}
-                        fullWidth
-                    />
+                    <FormControl 
+                      variant="outlined" 
+                      fullWidth
+                      error={!!errors.password}
+                      
+                      >
+                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                        <OutlinedInput
+                          {...field}
+                          id="outlined-adornment-password"
+                          type={showPassword ? 'text' : 'password'}
+                          endAdornment={
+                            <InputAdornment position="end">
+                              <IconButton
+                                aria-label={
+                                  showPassword ? 'hide the password' : 'display the password'
+                                }
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                onMouseUp={handleMouseUpPassword}
+                                edge="end"
+                              >
+                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                              </IconButton>
+                            </InputAdornment>
+                          }
+                          label="Password"
+                        />
+                        {errors.password && (<FormHelperText>{errors.password.message}</FormHelperText>)}
+                    </FormControl>
                 )}
             />
 
