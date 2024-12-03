@@ -47,18 +47,19 @@ export default function Register() {
 
    const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     try {
-      const newAccount = createAccount(userData)
-      console.log('User data:', newAccount)
+      const newAccount = createAccount(data)
+      console.log('Datos del usuario:', newAccount)
       /*
        Se debería enviar este usuario a través
        del servicio de autenticación, con algún método como RegistrarUsuario,
        pero es una intuición, nunca trabajé con registro.
       */
-      setIsSubmitted(true)
-      setSubmitError(null)
-      navigate('/')
+      navigate('/login')
     } catch (error) {
-      setSubmitError('Error al registrar usuario. Por favor intente nuevamente.')
+      setError('root', {
+        type: 'server',
+        message: 'Hubo un error al procesar su solicitud. Intente nuevamente.'
+      })
     }
   }
 
