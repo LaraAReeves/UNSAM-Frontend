@@ -3,7 +3,7 @@ import { TextField, Button, Box, } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import {useAuth} from "../../../context/AuthContext.tsx";
 
-export type LoginInputs = {
+type LoginInputs = {
     email: string
     password: string
 }
@@ -49,7 +49,7 @@ export default function Login() {
                 control={control}
                 defaultValue=""
                 rules={{
-                    required: 'El Email es requerido',
+                    required: 'Debe ingresar un email',
                     pattern: {
                         value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                         message: 'Ingrese una dirección de email válida',
@@ -73,10 +73,10 @@ export default function Login() {
                 control={control}
                 defaultValue=""
                 rules={{
-                    required: 'La contraseña es requerida',
+                    required: 'Debe ingresar una contraseña',
                     minLength: {
                         value: 6,
-                        message: 'La contraseña debe tener al menos 6 caracteres',
+                        message: 'La contraseña debe tener al menos 8 caracteres',
                     },
                 }}
                 render={({field}) => (
