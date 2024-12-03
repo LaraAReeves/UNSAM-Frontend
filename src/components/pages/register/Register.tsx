@@ -99,7 +99,7 @@ export default function Register() {
             Registro de Usuario
           </Typography>
 
-          <Box component='form' onSubmit={handleSubmit(onSubmit)} sx={{ width: '100%' }} aria-label="Formulario de registro">
+          <Box component='form' role="form" onSubmit={handleSubmit(onSubmit)} sx={{ width: '100%' }} aria-label="Formulario de registro">
             <Controller
               name='name'
               control={control}
@@ -261,7 +261,7 @@ export default function Register() {
               { isSubmitting ? "Registrando..." : "Registrarse"}
             </Button>
             <Typography>
-              ¿Ya tenés una cuenta? <Link onClick={() => (navigate('/login'))}>Iniciá sesión.</Link>
+              ¿Ya tenés una cuenta? <Link onClick={() => (navigate('/login'))} tabIndex={0}>Iniciá sesión.</Link>
             </Typography>
           </Box>
         </Box>
