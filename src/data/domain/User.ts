@@ -8,3 +8,17 @@ export class User {
   ) {}
 
 }
+
+export class LoginRequest {
+  constructor(
+      public email: string,
+      public password: string,
+  ){}
+}
+
+export class LoggedIn{
+  constructor(
+      public id: number,
+      /* */
+  ){}
+}

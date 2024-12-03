@@ -2,18 +2,14 @@ import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 import { TextField, Button, Box, } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import {useAuth} from "../../../context/AuthContext.tsx";
-
-type LoginInputs = {
-    email: string
-    password: string
-}
+import { LoginRequest } from '../../../data/domain/User.ts';
 
 export default function Login() {
-    const { control, handleSubmit, formState: { errors } } = useForm<LoginInputs>()
+    const { control, handleSubmit, formState: { errors } } = useForm<LoginRequest>()
     const { login } = useAuth()
     const navigate = useNavigate()
 
-    const onSubmit : SubmitHandler<LoginInputs> = (data) => {
+    const onSubmit : SubmitHandler<LoginRequest> = (data) => {
         console.log('Login Data:', data)
         // Redirigir a la ruta "/"
         login()
