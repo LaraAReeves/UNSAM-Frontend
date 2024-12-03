@@ -45,7 +45,7 @@ export default function Register() {
 
   const password = watch('password')
 
-  const onSubmit = async (userData: FormInputs) => {
+   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     try {
       const newAccount = createAccount(userData)
       console.log('User data:', newAccount)
