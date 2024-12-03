@@ -95,7 +95,6 @@ export default function Register() {
           <Typography
             variant='h5'
             fontWeight='bold'
-            color="#000000"
           >
             Registro de Usuario
           </Typography>
