@@ -99,18 +99,6 @@ export default function Register() {
             Registro de Usuario
           </Typography>
 
-          {submitError && (
-            <Alert severity='error' sx={{ width: '100%', mb: 2 }}>
-              {submitError}
-            </Alert>
-          )}
-
-          {isSubmitted && (
-            <Alert severity='success' sx={{ width: '100%', mb: 2 }}>
-              ¡Registro exitoso!
-            </Alert>
-          )}
-
           <Box component='form' onSubmit={handleSubmit(onSubmit)} sx={{ width: '100%' }}>
             <Controller
               name='name'
