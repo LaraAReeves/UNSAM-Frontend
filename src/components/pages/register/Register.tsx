@@ -64,7 +64,8 @@ export default function Register() {
   }
 
   return (
-      <Container sx={{
+      <Container
+        sx={{
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center'
@@ -90,7 +91,11 @@ export default function Register() {
             alignItems: 'center'
           }}
         >
-          <Typography variant='h5' component='h1' fontWeight="bold" color="#000000">
+          <Typography
+            variant='h5'
+            fontWeight='bold'
+            color="#000000"
+          >
             Registro de Usuario
           </Typography>
 
