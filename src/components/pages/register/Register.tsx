@@ -99,7 +99,7 @@ export default function Register() {
             Registro de Usuario
           </Typography>
 
-          <Box component='form' onSubmit={handleSubmit(onSubmit)} sx={{ width: '100%' }}>
+          <Box component='form' onSubmit={handleSubmit(onSubmit)} sx={{ width: '100%' }} aria-label="Formulario de registro">
             <Controller
               name='name'
               control={control}
@@ -113,6 +113,10 @@ export default function Register() {
                   onBlur={() => trigger('name')}
                   error={!!errors.name}
                   helperText={errors.name?.message}
+                  id='name'
+                  aria-label='Nombre'
+                  aria-required='true'
+                  aria-describedby='name-helper-text'
                 />
               )}
             />
@@ -130,6 +134,10 @@ export default function Register() {
                   onBlur={() => trigger('surname')}
                   error={!!errors.surname}
                   helperText={errors.surname?.message}
+                  id='surname'
+                  aria-label="Apellido"
+                  aria-required='true'
+                  aria-describedby='surname-helper-text'
                 />
               )}
             />
@@ -153,6 +161,10 @@ export default function Register() {
                   onBlur={() => trigger('username')}
                   error={!!errors.username}
                   helperText={errors.username?.message}
+                  id='username'
+                  aria-label="Nombre de usuario"
+                  aria-required='true'
+                  aria-describedby='username-helper-text'
                 />
               )}
             />
@@ -177,6 +189,10 @@ export default function Register() {
                   onBlur={() => trigger('email')}
                   error={!!errors.email}
                   helperText={errors.email?.message}
+                  id='email'
+                  aria-label="Email"
+                  aria-required='true'
+                  aria-describedby='email-helper-text'
                 />
               )}
             />
@@ -201,6 +217,10 @@ export default function Register() {
                   onBlur={() => trigger('password')}
                   error={!!errors.password}
                   helperText={errors.password?.message}
+                  id='password'
+                  aria-label="Contraseña"
+                  aria-required='true'
+                  aria-describedby='password-helper-text'
                 />
               )}
             />
@@ -223,6 +243,10 @@ export default function Register() {
                   onBlur={() => trigger('confirmPassword')}
                   error={!!errors.confirmPassword}
                   helperText={errors.confirmPassword?.message}
+                  id='confirmPassword'
+                  aria-label="Confirmar contraseña"
+                  aria-required='true'
+                  aria-describedby='confirmPassword-helper-text'
                 />
               )}
             />
