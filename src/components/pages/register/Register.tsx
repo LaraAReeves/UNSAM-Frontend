@@ -1,5 +1,5 @@
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
-import { Box, TextField, Button, Typography, Container, Alert, Link } from '@mui/material'
+import { Box, TextField, Button, Typography, Container, Link } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { User } from '../../../data/domain/User'
 
@@ -20,7 +20,8 @@ export default function Register() {
     handleSubmit,
     formState: { errors, isSubmitting, /* isSubmitSuccessful */ },
     watch,
-    setError
+    setError,
+    trigger
   } = useForm<FormInputs>({
     defaultValues: {
       name: '',
@@ -110,6 +111,7 @@ export default function Register() {
                   margin='normal'
                   fullWidth
                   label='Nombre'
+                  onBlur={() => trigger('name')}
                   error={!!errors.name}
                   helperText={errors.name?.message}
                 />
@@ -126,6 +128,7 @@ export default function Register() {
                   margin='normal'
                   fullWidth
                   label='Apellido'
+                  onBlur={() => trigger('surname')}
                   error={!!errors.surname}
                   helperText={errors.surname?.message}
                 />
@@ -148,6 +151,7 @@ export default function Register() {
                   margin='normal'
                   fullWidth
                   label='Nombre de usuario'
+                  onBlur={() => trigger('username')}
                   error={!!errors.username}
                   helperText={errors.username?.message}
                 />
@@ -171,6 +175,7 @@ export default function Register() {
                   fullWidth
                   label='Email'
                   type='email'
+                  onBlur={() => trigger('email')}
                   error={!!errors.email}
                   helperText={errors.email?.message}
                 />
@@ -194,6 +199,7 @@ export default function Register() {
                   fullWidth
                   label='Contraseña'
                   type='password'
+                  onBlur={() => trigger('password')}
                   error={!!errors.password}
                   helperText={errors.password?.message}
                 />
@@ -215,6 +221,7 @@ export default function Register() {
                   fullWidth
                   label='Confirmar contraseña'
                   type='password'
+                  onBlur={() => trigger('confirmPassword')}
                   error={!!errors.confirmPassword}
                   helperText={errors.confirmPassword?.message}
                 />
