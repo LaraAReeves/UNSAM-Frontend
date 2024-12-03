@@ -225,12 +225,11 @@ export default function Register() {
               type='submit'
               fullWidth
               variant='contained'
-              sx={{ mt: 3, mb: 2 }}
-              disabled={isSubmitted}
+              sx={{ mt: "1.5rem", mb: "1.5rem" }}
+              disabled={isSubmitting}
             >
-              Registrarse
+              { isSubmitting ? "Registrando..." : "Registrarse"}
             </Button>
-
             <Typography>
               ¿Ya tenés una cuenta? <Link onClick={() => (navigate('/login'))}>Iniciá sesión.</Link>
             </Typography>
