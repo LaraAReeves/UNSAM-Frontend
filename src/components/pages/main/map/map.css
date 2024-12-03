@@ -1,0 +1,13 @@
+/* BuildingMap.css */
+path {
+    fill: #ddd;
+    cursor: pointer;
+}
+
+path:hover {
+    fill: #aaa;
+}
+
+.selected {
+    fill: #ff5722;
+}
