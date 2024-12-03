@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 import { Box, TextField, Button, Typography, Container, Alert, Link } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
@@ -14,15 +13,14 @@ type FormInputs = {
 }
 
 export default function Register() {
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [submitError, setSubmitError] = useState<string | null>(null)
   const navigate = useNavigate()
 
   const {
     control,
     handleSubmit,
-    formState: { errors },
-    watch
+    formState: { errors, isSubmitting, /* isSubmitSuccessful */ },
+    watch,
+    setError
   } = useForm<FormInputs>({
     defaultValues: {
       name: '',
