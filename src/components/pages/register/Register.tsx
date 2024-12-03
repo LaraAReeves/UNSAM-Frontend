@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 import { Box, TextField, Button, Typography, Container, Alert, Link } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { User } from '../../../data/domain/User'
 
-interface FormInputs {
+type FormInputs = {
   name: string
   surname: string
   username: string
