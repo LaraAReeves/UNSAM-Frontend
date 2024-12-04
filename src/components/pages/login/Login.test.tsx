@@ -75,7 +75,33 @@ describe('Login Page', () => {
 
   })
 
+  it('Visibilidad de contraseña', async () => {
+    render(<AuthProvider><BrowserRouter><Login /></BrowserRouter></AuthProvider>)
   
+    const passwordInput = screen.getByLabelText('Password') as HTMLInputElement
+    const visibilityButton = screen.getByRole('button', { name: /display the password/i })
+
+    expect(passwordInput.type).toBe('password')
+    
+    // Verifica si el ícono es el de mostrar contraseña
+    expect(visibilityButton).toBeInTheDocument()
+    expect(visibilityButton).toHaveAttribute('aria-label', 'display the password')
+
+    //Muestro la contraseña
+    fireEvent.click(visibilityButton)
+    expect(passwordInput.type).toBe('text')
+
+    // Verifica que el aria-label cambió a 'hide the password'
+    expect(visibilityButton).toHaveAttribute('aria-label', 'hide the password')
+
+    //Oculto la contraseña
+    fireEvent.click(visibilityButton)
+    expect(passwordInput.type).toBe('password')
+
+    // Verifica que el aria-label volvió a 'display the password'
+    expect(visibilityButton).toHaveAttribute('aria-label', 'display the password')
+  })
+
   it('Ruteo correcto despues de la carga del form', async () => {
     const mockNavigate = vi.fn()
     vi.mocked(useNavigate).mockReturnValue(mockNavigate)
