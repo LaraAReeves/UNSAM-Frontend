@@ -7,6 +7,7 @@ export function Welcome() {
 
   return (
     <Box
+      data-testid="welcome-box"
       sx={{
         height: '100%',
         width: '100%',
