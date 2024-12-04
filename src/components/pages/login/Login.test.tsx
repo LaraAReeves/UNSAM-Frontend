@@ -3,6 +3,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter, useNavigate } from 'react-router-dom';
 import '@testing-library/jest-dom'; 
 import Login from './Login';
+import { AuthProvider } from '../../../context/AuthContext';
 
 //Mock de Navegación 
 vi.mock('react-router-dom', async () => {
@@ -15,23 +16,25 @@ vi.mock('react-router-dom', async () => {
 
 describe('Login Page', () => {
   it('Renderización correcta del componente', async () => {
-    render(<BrowserRouter><Login /></BrowserRouter>)
+    render(<AuthProvider><BrowserRouter><Login /></BrowserRouter></AuthProvider>)
     //screen.debug() //Para ver que se renderiza por terminal
 
     const logoUnsam = screen.getByAltText(/Logo UNSAM/i)
     expect(logoUnsam).toBeInTheDocument()
     expect(logoUnsam).toHaveAttribute('src',expect.stringContaining('logo-unsam-largo.png'))
 
-    expect(screen.getByText(/Tornaguía/i)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /Login/i })).toBeInTheDocument()
 
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/password/i)).toBeInTheDocument()
+    
+    const passwordInput = screen.getByTestId('password-input')
+    expect(passwordInput).toBeInTheDocument()
 
     expect(screen.getByRole('button', { name: /login/i })).toBeInTheDocument()
   })
 
-  it('Mensaje de error por mail incorrecto', async () => {
-    render(<BrowserRouter><Login /></BrowserRouter>)
+  it('Mensaje de error por mail incorrecto o sin llenar', async () => {
+    render(<AuthProvider><BrowserRouter><Login /></BrowserRouter></AuthProvider>)
 
     //simulo carga del input y envio el form
     fireEvent.input(screen.getByLabelText(/email/i), {target: { value: 'invalidemail' },})
@@ -39,37 +42,54 @@ describe('Login Page', () => {
     // verifica que se muestra el mensaje de error para el email
     await waitFor(() => {
       expect(
-        screen.getByText(/ingrese una dirección de email válida/i)).toBeInTheDocument()
+        screen.getByText(/Ingrese una dirección de email válida/i)).toBeInTheDocument()
     })
-  })
 
-  it('Mensaje de error por password demasiado corta', async () => {
-    render(<BrowserRouter><Login /></BrowserRouter>)
-
-    //simulo carga del input y envio el form
-    fireEvent.input(screen.getByLabelText(/password/i), {target: { value: '123' },})
+    fireEvent.input(screen.getByLabelText(/email/i), {target: { value: '' },})
     fireEvent.submit(screen.getByRole('button', { name: /login/i }))
     // verifica que se muestra el mensaje de error para el email
     await waitFor(() => {
       expect(
-        screen.getByText(/la contraseña debe tener al menos 6 caracteres/i)).toBeInTheDocument()
+        screen.getByText(/Debe ingresar un email/i)).toBeInTheDocument()
     })
+
   })
 
+  it('Mensaje de error por password demasiado corta o sin llenar', async () => {
+    render(<AuthProvider><BrowserRouter><Login /></BrowserRouter></AuthProvider>)
+
+    //simulo carga del input y envio el form
+    fireEvent.change(screen.getByLabelText('Password'), { target: { value: '123' } })
+    
+    fireEvent.submit(screen.getByRole('button', { name: /login/i }))
+    // verifica que se muestra el mensaje de error para el email
+    await waitFor(() => {
+      expect(screen.getByText('La contraseña debe tener al menos 6 caracteres')).toBeInTheDocument()
+    })  
+
+    fireEvent.change(screen.getByLabelText('Password'), { target: { value: '' } })
+    fireEvent.submit(screen.getByRole('button', { name: /login/i }))
+    await waitFor(() => {
+      expect(screen.getByText('Debe ingresar una contraseña')).toBeInTheDocument()
+    })  
+
+  })
+
+  
   it('Ruteo correcto despues de la carga del form', async () => {
     const mockNavigate = vi.fn()
     vi.mocked(useNavigate).mockReturnValue(mockNavigate)
 
-    render(<BrowserRouter><Login /></BrowserRouter>)
+    render(<AuthProvider><BrowserRouter><Login /></BrowserRouter></AuthProvider>)
 
     //cargo los inputs correctamente
     fireEvent.input(screen.getByLabelText(/email/i), {target: { value: 'test@example.com' },})
-    fireEvent.input(screen.getByLabelText(/password/i), {target: { value: '123456' },})
+    fireEvent.change(screen.getByLabelText('Password'), { target: { value: 'password123' } })
 
     fireEvent.submit(screen.getByRole('button', { name: /login/i }))
 
     // verifico que 'navigate' sea llamado después de enviar el formulario
-    await waitFor(() => {expect(mockNavigate).toHaveBeenCalledWith('/')})
+    await waitFor(() => {expect(mockNavigate).toHaveBeenCalledWith('/')}) 
 
   })
 })
