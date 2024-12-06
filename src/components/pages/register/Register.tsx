@@ -1,10 +1,9 @@
-import { useState } from 'react'
-import { useForm, Controller } from 'react-hook-form'
-import { Box, TextField, Button, Typography, Container, Alert, Link } from '@mui/material'
+import { useForm, Controller, SubmitHandler } from 'react-hook-form'
+import { Box, TextField, Button, Typography, Container, Link } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { User } from '../../../data/domain/User'
 
-interface FormInputs {
+type FormInputs = {
   name: string
   surname: string
   username: string
@@ -14,23 +13,15 @@ interface FormInputs {
 }
 
 export default function Register() {
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [submitError, setSubmitError] = useState<string | null>(null)
   const navigate = useNavigate()
-
-  const navigateToLogin = () => {
-    navigate('/login')
-  }
-
-  const navigateToMain = () => {
-    navigate('/')
-  }
 
   const {
     control,
     handleSubmit,
-    formState: { errors },
-    watch
+    formState: { errors, isSubmitting, /* isSubmitSuccessful */ },
+    watch,
+    setError,
+    trigger
   } = useForm<FormInputs>({
     defaultValues: {
       name: '',
@@ -55,25 +46,27 @@ export default function Register() {
 
   const password = watch('password')
 
-  const onSubmit = async (userData: FormInputs) => {
+   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     try {
-      const newUser = createAccount(userData)
-      console.log('User data:', newUser)
+      const newAccount = createAccount(data)
+      console.log('Datos del usuario:', newAccount)
       /*
        Se debería enviar este usuario a través
        del servicio de autenticación, con algún método como RegistrarUsuario,
        pero es una intuición, nunca trabajé con registro.
       */
-      setIsSubmitted(true)
-      setSubmitError(null)
-      navigateToMain()
+      navigate('/login')
     } catch (error) {
-      setSubmitError('Error al registrar usuario. Por favor intente nuevamente.')
+      setError('root', {
+        type: 'server',
+        message: 'Hubo un error al procesar su solicitud. Intente nuevamente.'
+      })
     }
   }
 
   return (
-      <Container sx={{
+      <Container
+        sx={{
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center'
@@ -99,23 +92,14 @@ export default function Register() {
             alignItems: 'center'
           }}
         >
-          <Typography variant='h5' component='h1' fontWeight="bold" color="#000000">
+          <Typography
+            variant='h5'
+            fontWeight='bold'
+          >
             Registro de Usuario
           </Typography>
 
-          {submitError && (
-            <Alert severity='error' sx={{ width: '100%', mb: 2 }}>
-              {submitError}
-            </Alert>
-          )}
-
-          {isSubmitted && (
-            <Alert severity='success' sx={{ width: '100%', mb: 2 }}>
-              ¡Registro exitoso!
-            </Alert>
-          )}
-
-          <Box component='form' onSubmit={handleSubmit(onSubmit)} sx={{ width: '100%' }}>
+          <Box component='form' role="form" onSubmit={handleSubmit(onSubmit)} sx={{ width: '100%' }} aria-label="Formulario de registro">
             <Controller
               name='name'
               control={control}
@@ -126,8 +110,13 @@ export default function Register() {
                   margin='normal'
                   fullWidth
                   label='Nombre'
+                  onBlur={() => trigger('name')}
                   error={!!errors.name}
                   helperText={errors.name?.message}
+                  id='name'
+                  aria-label='Nombre'
+                  aria-required='true'
+                  aria-describedby='name-helper-text'
                 />
               )}
             />
@@ -142,8 +131,13 @@ export default function Register() {
                   margin='normal'
                   fullWidth
                   label='Apellido'
+                  onBlur={() => trigger('surname')}
                   error={!!errors.surname}
                   helperText={errors.surname?.message}
+                  id='surname'
+                  aria-label="Apellido"
+                  aria-required='true'
+                  aria-describedby='surname-helper-text'
                 />
               )}
             />
@@ -164,8 +158,13 @@ export default function Register() {
                   margin='normal'
                   fullWidth
                   label='Nombre de usuario'
+                  onBlur={() => trigger('username')}
                   error={!!errors.username}
                   helperText={errors.username?.message}
+                  id='username'
+                  aria-label="Nombre de usuario"
+                  aria-required='true'
+                  aria-describedby='username-helper-text'
                 />
               )}
             />
@@ -177,7 +176,7 @@ export default function Register() {
                 required: 'Debe ingresar un email',
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'Email inválido'
+                  message: 'Ingrese un email válido'
                 }
               }}
               render={({ field }) => (
@@ -187,8 +186,13 @@ export default function Register() {
                   fullWidth
                   label='Email'
                   type='email'
+                  onBlur={() => trigger('email')}
                   error={!!errors.email}
                   helperText={errors.email?.message}
+                  id='email'
+                  aria-label="Email"
+                  aria-required='true'
+                  aria-describedby='email-helper-text'
                 />
               )}
             />
@@ -210,8 +214,13 @@ export default function Register() {
                   fullWidth
                   label='Contraseña'
                   type='password'
+                  onBlur={() => trigger('password')}
                   error={!!errors.password}
                   helperText={errors.password?.message}
+                  id='password'
+                  aria-label="Contraseña"
+                  aria-required='true'
+                  aria-describedby='password-helper-text'
                 />
               )}
             />
@@ -231,8 +240,13 @@ export default function Register() {
                   fullWidth
                   label='Confirmar contraseña'
                   type='password'
+                  onBlur={() => trigger('confirmPassword')}
                   error={!!errors.confirmPassword}
                   helperText={errors.confirmPassword?.message}
+                  id='confirmPassword'
+                  aria-label="Confirmar contraseña"
+                  aria-required='true'
+                  aria-describedby='confirmPassword-helper-text'
                 />
               )}
             />
@@ -241,14 +255,13 @@ export default function Register() {
               type='submit'
               fullWidth
               variant='contained'
-              sx={{ mt: 3, mb: 2 }}
-              disabled={isSubmitted}
+              sx={{ mt: "1.5rem", mb: "1.5rem" }}
+              disabled={isSubmitting}
             >
-              Registrarse
+              { isSubmitting ? "Registrando..." : "Registrarse"}
             </Button>
-
             <Typography>
-              ¿Ya tenés una cuenta? <Link onClick={navigateToLogin}>Iniciá sesión.</Link>
+              ¿Ya tenés una cuenta? <Link onClick={() => (navigate('/login'))} tabIndex={0}>Iniciá sesión.</Link>
             </Typography>
           </Box>
         </Box>
