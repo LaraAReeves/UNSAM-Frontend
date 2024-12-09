@@ -92,14 +92,13 @@ export default function Login() {
                     <FormControl 
                       variant="outlined" 
                       fullWidth
-                      error={!!errors.password}
-                      
-                      >
+                      error={!!errors.password}>
                         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                         <OutlinedInput
                           {...field}
                           id="outlined-adornment-password"
                           type={showPassword ? 'text' : 'password'}
+                          data-testid="password-input"
                           endAdornment={
                             <InputAdornment position="end">
                               <IconButton
@@ -117,7 +116,7 @@ export default function Login() {
                           }
                           label="Password"
                         />
-                        {errors.password && (<FormHelperText>{errors.password.message}</FormHelperText>)}
+                        {errors.password && <FormHelperText>{errors.password.message}</FormHelperText>}
                     </FormControl>
                 )}
             />
