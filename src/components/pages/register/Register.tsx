@@ -117,6 +117,7 @@ export default function Register() {
                   aria-label='Nombre'
                   aria-required='true'
                   aria-describedby='name-helper-text'
+                  data-testid="name-input"
                 />
               )}
             />
@@ -138,6 +139,7 @@ export default function Register() {
                   aria-label="Apellido"
                   aria-required='true'
                   aria-describedby='surname-helper-text'
+                  data-testid="surname-input"
                 />
               )}
             />
@@ -165,6 +167,7 @@ export default function Register() {
                   aria-label="Nombre de usuario"
                   aria-required='true'
                   aria-describedby='username-helper-text'
+                  data-testid="userName-input"
                 />
               )}
             />
@@ -193,6 +196,7 @@ export default function Register() {
                   aria-label="Email"
                   aria-required='true'
                   aria-describedby='email-helper-text'
+                  data-testid="email-input"
                 />
               )}
             />
@@ -221,6 +225,7 @@ export default function Register() {
                   aria-label="Contraseña"
                   aria-required='true'
                   aria-describedby='password-helper-text'
+                  data-testid="password-input"
                 />
               )}
             />
@@ -247,6 +252,7 @@ export default function Register() {
                   aria-label="Confirmar contraseña"
                   aria-required='true'
                   aria-describedby='confirmPassword-helper-text'
+                  data-testid="confirmPassword-input"
                 />
               )}
             />
