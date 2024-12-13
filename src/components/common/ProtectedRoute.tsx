@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
-import {useAuth} from "../../context/AuthContext.tsx";
+import { useAuth } from "@/context/AuthContext.tsx";
 
 interface ProtectedRouteProps {
     children: React.ReactNode // Elementos hijos que se renderizarán si el usuario está autenticado
