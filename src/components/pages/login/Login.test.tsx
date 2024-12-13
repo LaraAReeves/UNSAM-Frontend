@@ -1,11 +1,11 @@
 import { describe, expect, it, vi} from 'vitest';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter, useNavigate } from 'react-router-dom';
-import '@testing-library/jest-dom'; 
+import '@testing-library/jest-dom';
 import Login from './Login';
-import { AuthProvider } from '../../../context/AuthContext';
+import { AuthProvider } from '@/context/AuthContext';
 
-//Mock de Navegación 
+//Mock de Navegación
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom')
   return {
@@ -26,7 +26,7 @@ describe('Login Page', () => {
     expect(screen.getByRole('heading', { name: /Login/i })).toBeInTheDocument()
 
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument()
-    
+
     const passwordInput = screen.getByTestId('password-input')
     expect(passwordInput).toBeInTheDocument()
 
@@ -60,29 +60,29 @@ describe('Login Page', () => {
 
     //simulo carga del input y envio el form
     fireEvent.change(screen.getByLabelText('Password'), { target: { value: '123' } })
-    
+
     fireEvent.submit(screen.getByRole('button', { name: /login/i }))
     // verifica que se muestra el mensaje de error para el email
     await waitFor(() => {
       expect(screen.getByText('La contraseña debe tener al menos 6 caracteres')).toBeInTheDocument()
-    })  
+    })
 
     fireEvent.change(screen.getByLabelText('Password'), { target: { value: '' } })
     fireEvent.submit(screen.getByRole('button', { name: /login/i }))
     await waitFor(() => {
       expect(screen.getByText('Debe ingresar una contraseña')).toBeInTheDocument()
-    })  
+    })
 
   })
 
   it('Visibilidad de contraseña', async () => {
     render(<AuthProvider><BrowserRouter><Login /></BrowserRouter></AuthProvider>)
-  
+
     const passwordInput = screen.getByLabelText('Password') as HTMLInputElement
     const visibilityButton = screen.getByRole('button', { name: /display the password/i })
 
     expect(passwordInput.type).toBe('password')
-    
+
     // Verifica si el ícono es el de mostrar contraseña
     expect(visibilityButton).toBeInTheDocument()
     expect(visibilityButton).toHaveAttribute('aria-label', 'display the password')
@@ -115,7 +115,7 @@ describe('Login Page', () => {
     fireEvent.submit(screen.getByRole('button', { name: /login/i }))
 
     // verifico que 'navigate' sea llamado después de enviar el formulario
-    await waitFor(() => {expect(mockNavigate).toHaveBeenCalledWith('/')}) 
+    await waitFor(() => {expect(mockNavigate).toHaveBeenCalledWith('/')})
 
   })
 })
