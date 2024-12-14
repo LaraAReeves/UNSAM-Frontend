@@ -43,6 +43,10 @@ export default function Login() {
                 p: 3,
                 border: '1px solid #ccc',
                 borderRadius: 2,
+                // Ajustes para pantallas pequeñas (tablet/mobile)
+                '@media (max-width:768px)': {
+                    border: 'none',
+                }
             }}
         >
             <img
