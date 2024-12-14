@@ -6,18 +6,18 @@ export default function Nav() {
   // const navigate = useNavigate()
 
   return (
-    <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0}} enableColorOnDark>
+    <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }} enableColorOnDark>
       <Toolbar>
-        <IconButton /* onClick={() => navigate("/search")} */>
-        <MagnifyingGlass size={32}/>
+        <IconButton /* onClick={() => navigate("/profile")} */ aria-label='Perfil'>
+          <UserCircle size={32} alt='Usuario' />
         </IconButton>
-        <Box sx={{ flexGrow: 1 }}/>
-        <IconButton /* onClick={() => navigate("/")} */ >
-        <MapTrifold size={32}/>
+        <Box sx={{ flexGrow: 1 }} />
+        <IconButton /* onClick={() => navigate("/")} */ aria-label='Inicio'>
+          <MapTrifold size={32} alt='Mapa' />
         </IconButton>
-        <Box sx={{ flexGrow: 1 }}/>
-        <IconButton /* onClick={() => navigate("/profile")} */ >
-        <UserCircle size={32}/>
+        <Box sx={{ flexGrow: 1 }} />
+        <IconButton /* onClick={() => navigate("/search")} */ aria-label='Buscar'>
+          <MagnifyingGlass size={32} alt='Lupa' />
         </IconButton>
       </Toolbar>
     </AppBar>
