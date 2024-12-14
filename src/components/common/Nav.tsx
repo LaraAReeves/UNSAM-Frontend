@@ -8,15 +8,15 @@ export default function Nav() {
   return (
     <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0}} enableColorOnDark>
       <Toolbar>
-        <IconButton color="secondary" /* onClick={() => navigate("/search")} */>
+        <IconButton /* onClick={() => navigate("/search")} */>
         <MagnifyingGlass size={32}/>
         </IconButton>
         <Box sx={{ flexGrow: 1 }}/>
-        <IconButton color="secondary" /* onClick={() => navigate("/")} */ >
+        <IconButton /* onClick={() => navigate("/")} */ >
         <MapTrifold size={32}/>
         </IconButton>
         <Box sx={{ flexGrow: 1 }}/>
-        <IconButton color="secondary" /* onClick={() => navigate("/profile")} */ >
+        <IconButton /* onClick={() => navigate("/profile")} */ >
         <UserCircle size={32}/>
         </IconButton>
       </Toolbar>
