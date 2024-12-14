@@ -2,9 +2,9 @@ import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 import { TextField, Button, Box, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, FormHelperText, } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import {useAuth} from "../../../context/AuthContext.tsx";
-import { LoginRequest } from '../../../data/domain/User.ts';
-import { VisibilityOff, Visibility } from '@mui/icons-material';
+import { LoginRequest } from '../../../data/domain/User.ts'
 import React from 'react';
+import { EyeSlash,Eye} from '@phosphor-icons/react'
 
 export default function Login() {
     const { control, handleSubmit, formState: { errors } } = useForm<LoginRequest>()
@@ -43,6 +43,10 @@ export default function Login() {
                 p: 3,
                 border: '1px solid #ccc',
                 borderRadius: 2,
+                // Ajustes para pantallas pequeñas (tablet/mobile)
+                '@media (max-width:768px)': {
+                    border: 'none',
+                }
             }}
         >
             <img
@@ -110,7 +114,7 @@ export default function Login() {
                                 onMouseUp={handleMouseUpPassword}
                                 edge="end"
                               >
-                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                {showPassword ? <Eye /> : <EyeSlash />}
                               </IconButton>
                             </InputAdornment>
                           }
