@@ -2,9 +2,9 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { Welcome } from './Welcome';
 import { BrowserRouter, useNavigate } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
-import '@testing-library/jest-dom'; 
+import '@testing-library/jest-dom';
 
-//Mock de Navegación 
+//Mock de Navegación
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom')
   return {
@@ -17,10 +17,10 @@ vi.mock('react-router-dom', async () => {
 describe('Welcome Page', () =>{
   it('Renderización correcta del componente', async () => {
     render(<BrowserRouter><Welcome /></BrowserRouter>,)
-    
+
     //rendering del logo
     expect(screen.getByAltText(/University Logo/i)).toBeInTheDocument()
-    
+
     //renderings de los botones
     expect(screen.getByRole('button', { name: /Iniciá sesión/i })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /Registrate/i })).toBeInTheDocument()

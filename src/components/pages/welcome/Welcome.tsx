@@ -1,5 +1,5 @@
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
-import { TransparentContainer } from '../../ui/TransparentContainer'
+import { TransparentContainer } from '@/components/ui/TransparentContainer'
 import { useNavigate } from 'react-router-dom'
 
 export function Welcome() {
