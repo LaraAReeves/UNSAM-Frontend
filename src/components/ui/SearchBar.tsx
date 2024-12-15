@@ -17,7 +17,6 @@ export default function SeachBar() {
         id="filled-hidden-label-normal"
         variant="outlined"
         fullWidth
-        style={{width: '100%'}}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         sx={{
@@ -25,6 +24,7 @@ export default function SeachBar() {
           '&.Mui-focused fieldset': {borderColor: '#5f83b1'},
           '& .MuiInputLabel-root': {top: '-8px'} // Ajuste de la etiqueta para que quede centrada verticalmente 
         }}}
+        aria-label='Ingresar búsqueda'
       />
       <IconButton 
           sx={{ padding: 1,
@@ -37,9 +37,9 @@ export default function SeachBar() {
             justifyContent: 'center',
             alignItems: 'center', 
            }}
-          aria-label="Search"
+          aria-label="Buscar"
           onClick={handleSearch}>
-       <MagnifyingGlass size={32} color='white'/>
+       <MagnifyingGlass size={32} alt='Lupa'/>
       </IconButton>
     </Box>
   )
