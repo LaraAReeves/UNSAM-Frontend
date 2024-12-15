@@ -1,11 +1,14 @@
-import { CardActionArea, CardContent, Typography, Card, Box, Divider, Button } from "@mui/material";
+import { CardActionArea, CardContent, Typography, Card, Box, Divider} from "@mui/material";
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PersonIcon from '@mui/icons-material/Person';
 
+type ClassRoomCardProps = {
+  onClick?: () => void  
+}
 
-export default function ClassRoomCard() {
+export default function ClassRoomCard({ onClick }: ClassRoomCardProps) {
 
   return (
     <Box  sx={{
@@ -13,19 +16,19 @@ export default function ClassRoomCard() {
       justifyContent: 'center', 
       alignItems: 'center',
       flexDirection: 'column',
-      mx: 2,p: 2,gap:2
+      mx: 1,p: 1,gap:1
     }}>
 
     <Card sx={{
         width: '100%',
-        maxWidth: 450,
+        maxWidth: 500,
         borderRadius: 3,
         boxShadow: 1,
         border: '1px solid #e0e0e0',
         '@media (max-width: 600px)': {maxWidth: '90%'},
         
       }}>
-        <CardActionArea >
+        <CardActionArea onClick={onClick}>
           <CardContent sx={{ backgroundColor: '#f5f5f5', borderRadius: 3 }}>
             <Typography gutterBottom variant="h5" component="div" sx={{ color: '#333', fontWeight: 'bold' }}>
             Materia X
