@@ -1,8 +1,8 @@
 import ClassRoomCard from "@/components/common/ClassRoomCard";
 import ClassInfoModal from "@/components/common/Modal";
-import { Button, Typography } from "@mui/material";
+import { Box, Button, Divider, IconButton, InputBase, Typography } from "@mui/material";
 import React from "react";
-
+import { MagnifyingGlass} from '@phosphor-icons/react'
 
 export default function Map() {
   const [open, setOpen] = React.useState(false)
@@ -31,9 +31,23 @@ export default function Map() {
       <ClassRoomCard onClick={handleOpenCard}/>
 
       <ClassInfoModal open={open} handleClose={handleClose}>
-      {modalContent === "map" ? 
-          ( <ClassRoomCard /> ) 
-        : modalContent === "card" ? (// Contenido cuando se abre desde el mapa
+      {modalContent === "map" ?(
+        <>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder='Buscar materia'
+            aria-label='Buscar materia'
+          />
+          <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+          <IconButton type="button" sx={{ p: '10px' }} aria-label="Buscar">
+            <MagnifyingGlass size={32} alt='Lupa'/>
+          </IconButton>
+          </Box>
+          <ClassRoomCard />
+        </>  
+      
+        ): modalContent === "card" ? (// Contenido cuando se abre desde el mapa
           <>
             <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ display: 'flex', alignItems: 'center',justifyContent: 'center'}}>
               Mapa Torna
