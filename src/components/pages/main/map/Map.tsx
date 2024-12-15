@@ -1,10 +1,11 @@
 import ClassRoomCard from "@/components/common/ClassRoomCard";
+import { Button } from "@mui/material";
 
 
 export default function Map() {
   return (
     <>
-      <h1>Map</h1>
+      <Button variant="contained" sx={{mb:4}}>Mapa</Button>
       <ClassRoomCard/>
     </>
   )
