@@ -5,6 +5,7 @@ export class Classroom {
   constructor(
     public id: number,
     public name: string,
+    public building: Building,
     public capacity: number,
     public type: ClassroomType,
     public subject: Subject
