@@ -1,12 +1,12 @@
 import { Career } from "./Career"
-import { Professor } from "./Professor"
+import { Teacher } from "./Teacher"
 
 export class Subject {
   constructor(
     public id: number,
     public name: string,
     public careers: Career[],
-    public proffesors: Professor[],
+    public teachers: Teacher[],
     public commission: string
   ) {}
 
@@ -15,9 +15,9 @@ export class Subject {
     return careerNames.join(', ')
   }
 
-  formatProfessorNames(): string {
-    const professorNames = this.proffesors.map(professor => professor.name)
-    return professorNames.join(', ')
+  formatTeacherNames(): string {
+    const teacherNames = this.teachers.map(teacher => teacher.name)
+    return teacherNames.join(', ')
   }
 
   subjectAndCommission(): string {
