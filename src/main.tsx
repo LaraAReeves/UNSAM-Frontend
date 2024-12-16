@@ -15,10 +15,11 @@ let unsamTheme = createTheme({
     light: {
       palette: {
         primary: {
-          main:'#7DA1C4' /*Pantone 645 como indica la UNSAM, si cambia es por el color primario de la ECYT, sino no tocar.*/
+          main:'#7DA1C4', /*Pantone 645 como indica la UNSAM, si cambia es por #00DC8C (color de ECyT).*/
+          contrastText: '#FFFFFF' /*Blanco para el texto en el color principal*/
         },
         secondary: {
-          main:'#DEECF3' /*Gris clarito complementario, puede cambiar*/
+          main:'#FFFFFF'
         },
         tonalOffset: 0.1
       }

@@ -75,9 +75,9 @@ export default function ClassRoomCard({className,
                 Horario: {schedules} {/*Hay que ver como viene del back*/}
               </Typography>
             </Box>
-{/* Capacidad? -> vista modal */}
-            <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 1 }}>
-              <BookOpenText size={24} color='#1976d2' style={{ marginRight: '8px', alignSelf: 'flex-start' }} />
+
+            <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 1,flexWrap: 'wrap', }}>
+              <BookOpenText size={24} color='#1976d2' style={{  alignSelf: 'flex-start' }} />
               <Typography
                 variant="body2"
                 sx={{
