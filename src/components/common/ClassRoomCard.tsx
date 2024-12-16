@@ -10,6 +10,7 @@ interface ClassRoomCardProps{
   teacher : string[]    
   careers : string[]
   schedules : string
+  viewType: string
 }
 
 
@@ -20,7 +21,8 @@ export default function ClassRoomCard({className,
                                       building,
                                       teacher,
                                       careers,
-                                      schedules}:ClassRoomCardProps) {
+                                      schedules,
+                                      viewType}:ClassRoomCardProps) {
 
   return (
     <Box  sx={{
@@ -46,12 +48,16 @@ export default function ClassRoomCard({className,
             </Typography>
             <Divider sx={{ mb: 2 }} />
 
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-              <MapPin size={24} color='#1976d2' style={{ marginRight:'8px'}}/>
-              <Typography variant="body2" sx={{ color: '#666' }}>
-                Aula: {classroom} - Edificio: {building}
-              </Typography>
-            </Box>
+            {viewType === "standard" && (
+              <>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                  <MapPin size={24} color='#1976d2' style={{ marginRight:'8px'}}/>
+                  <Typography variant="body2" sx={{ color: '#666' }}>
+                    Aula: {classroom} - Edificio: {building}
+                  </Typography>
+                </Box>
+              </>
+            )}
 
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <User size={24} color='#1976d2' style={{ marginRight:'8px'}}/>
