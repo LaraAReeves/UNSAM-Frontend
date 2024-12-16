@@ -20,6 +20,7 @@ export const router = createBrowserRouter([
             </ProtectedRoute>,
         children: [
             { path: '/', element: <Map /> },
+            { path: '/profile', element: <Profile /> }
         ],
         errorElement: <NotFound />
     },
