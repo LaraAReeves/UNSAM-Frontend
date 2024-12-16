@@ -1,8 +1,26 @@
 import { CardActionArea, CardContent, Typography, Card, Box, Divider } from "@mui/material";
 import { MapPin,Clock,User,BookOpenText} from '@phosphor-icons/react'
 
+interface ClassRoomCardProps{
+  className : string
+ // classroomType : string
+  commission : string
+  classroom : string
+  building : string
+  teacher : string    //Tengo mis dudas si dejarlo como una lista o un string
+  careers : string[]
+  schedules : string
+}
 
-export default function ClassRoomCard() {
+
+export default function ClassRoomCard({className,
+                                     // classroomType,
+                                      commission,
+                                      classroom,
+                                      building,
+                                      teacher,
+                                      careers,
+                                      schedules}:ClassRoomCardProps) {
 
   return (
     <Box  sx={{
@@ -24,28 +42,28 @@ export default function ClassRoomCard() {
         <CardActionArea>
           <CardContent sx={{ backgroundColor: '#f5f5f5', borderRadius: 3 }}>
             <Typography gutterBottom variant="h5" component="div" sx={{ color: '#333', fontWeight: 'bold' }}>
-            Modelo 4.0
+             {className}&nbsp;&nbsp;-&nbsp;&nbsp;{commission}
             </Typography>
             <Divider sx={{ mb: 2 }} />
 
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <MapPin size={24} color='#1976d2' style={{ marginRight:'8px'}}/>
               <Typography variant="body2" sx={{ color: '#666' }}>
-                Aula: 101 - Edificio A
+                Aula: {classroom} - Edificio: {building}
               </Typography>
             </Box>
             
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <User size={24} color='#1976d2' style={{ marginRight:'8px'}}/>
               <Typography variant="body2" sx={{ color: '#666' }}>
-                Profesor: Cosme Fulanito
+                Profesor: {teacher}
               </Typography>
             </Box>
 
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <Clock size={24} color='#1976d2' style={{ marginRight:'8px'}}/>
               <Typography variant="body2" sx={{ color: '#666' }}>
-                Horario: 08:00 - 10:00
+                Horario: {schedules} {/*Hay que ver como viene del back*/}
               </Typography>
             </Box>
 
@@ -54,13 +72,17 @@ export default function ClassRoomCard() {
               <Typography 
                 variant="body2" 
                 sx={{ 
-                  color: '#1976d2', 
-                  display: 'inline-block', 
+                  color: '#1976d2',
                   maxWidth: 'calc(100% - 32px)', 
                   wordBreak: 'break-word',
                   whiteSpace: 'normal',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  WebkitLineClamp: 2, // número de lineas que se deben mostrar
+                  WebkitBoxOrient: 'vertical',
+                  display: '-webkit-box',
                 }}>
-                Carreras: Tecnicatura en Programación Informática
+                Carreras:{careers.join(', ')}
               </Typography>
             </Box>
           </CardContent>
