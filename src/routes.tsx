@@ -6,6 +6,7 @@ import Register from '@/components/pages/register/Register'
 import NotFound from '@/components/pages/notFound/NotFound'
 import { Welcome } from '@/components/pages/welcome/Welcome'
 import { ProtectedRoute } from "@/components/common/ProtectedRoute.tsx";
+import Profile from '@/components/pages/profile/Profile'
 
 
 export const router = createBrowserRouter([
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
             </ProtectedRoute>,
         children: [
             { path: '/', element: <Map /> },
+            { path: '/profile', element: <Profile /> }
         ],
         errorElement: <NotFound />
     },
