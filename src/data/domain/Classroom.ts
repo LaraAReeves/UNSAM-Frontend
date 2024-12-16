@@ -7,8 +7,4 @@ export class Classroom {
   ) {}
 }
 
-export enum ClassroomType {
-  LECTURE = 'LECTURE',
-  LAB = 'LAB',
-  WORKSHOP = 'WORKSHOP',
-}
+type ClassroomType = 'Regular' | 'Laboratorio' | 'Taller'
