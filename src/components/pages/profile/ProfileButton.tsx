@@ -5,7 +5,6 @@ export const ProfileButton = (props: ButtonProps) => {
     variant="contained"
     sx={
       {
-        color: 'white',
         width: { xs: '90%', sm: '50%', md:'25%' }
       }}
     {...props}
