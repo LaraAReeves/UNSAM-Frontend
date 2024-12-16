@@ -24,8 +24,8 @@ export default function ClassRoomCard({className,
 
   return (
     <Box  sx={{
-      display: 'flex', 
-      justifyContent: 'center', 
+      display: 'flex',
+      justifyContent: 'center',
       alignItems: 'center',
       flexDirection: 'column',
       mx: 2,p: 2,gap:2
@@ -52,7 +52,7 @@ export default function ClassRoomCard({className,
                 Aula: {classroom} - Edificio: {building}
               </Typography>
             </Box>
-            
+
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <User size={24} color='#1976d2' style={{ marginRight:'8px'}}/>
               <Typography variant="body2" sx={{ color: '#666' }}>
@@ -69,11 +69,11 @@ export default function ClassRoomCard({className,
 
             <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 1 }}>
               <BookOpenText size={24} color='#1976d2' style={{ marginRight: '8px', alignSelf: 'flex-start' }} />
-              <Typography 
-                variant="body2" 
-                sx={{ 
+              <Typography
+                variant="body2"
+                sx={{
                   color: '#1976d2',
-                  maxWidth: 'calc(100% - 32px)', 
+                  maxWidth: 'calc(100% - 32px)',
                   wordBreak: 'break-word',
                   whiteSpace: 'normal',
                   overflow: 'hidden',
@@ -82,12 +82,12 @@ export default function ClassRoomCard({className,
                   WebkitBoxOrient: 'vertical',
                   display: '-webkit-box',
                 }}>
-                Carreras:{careers.join(', ')}
+                Carreras: {careers.join(', ')}
               </Typography>
             </Box>
           </CardContent>
         </CardActionArea>
       </Card>
-    </Box> 
+    </Box>
   )
 }
