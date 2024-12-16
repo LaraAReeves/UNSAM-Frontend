@@ -1,7 +1,8 @@
 import { Career } from './Career'
+import { Entity } from './Entity'
 import { Teacher } from './Teacher'
 
-export class Subject {
+export class Subject implements Entity {
   constructor(
     public id: number,
     public name: string,

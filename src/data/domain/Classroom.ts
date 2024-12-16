@@ -1,7 +1,8 @@
 import { Building } from './Building'
+import { Entity } from './Entity'
 import { Subject } from './Subject'
 
-export class Classroom {
+export class Classroom implements Entity {
   constructor(
     public id: number,
     public name: string,
