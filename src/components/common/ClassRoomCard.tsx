@@ -2,18 +2,19 @@ import { CardActionArea, CardContent, Typography, Card, Box, Divider } from "@mu
 import { MapPin,Clock,User,BookOpenText} from '@phosphor-icons/react'
 
 type ClassRoomCardProps = {
-  onClick?: () => void  
+  onClick?: () => void
 }
 
 export default function ClassRoomCard({ onClick }: ClassRoomCardProps) {
 
   return (
     <Box  sx={{
-      display: 'flex', 
-      justifyContent: 'center', 
+      display: 'flex',
+      justifyContent: 'center',
       alignItems: 'center',
       flexDirection: 'column',
-      mx: 2,p: 2,gap:2
+      mx: 0,
+      p: 0
     }}>
 
     <Card sx={{
@@ -21,9 +22,7 @@ export default function ClassRoomCard({ onClick }: ClassRoomCardProps) {
         maxWidth: 500,
         borderRadius: 3,
         boxShadow: 1,
-        border: '1px solid #e0e0e0',
-        '@media (max-width: 600px)': {maxWidth: '90%'},
-        
+        border: '1px solid #e0e0e0'
       }}>
         <CardActionArea onClick={onClick}>
           <CardContent sx={{ backgroundColor: '#f5f5f5', borderRadius: 3 }}>
@@ -38,7 +37,7 @@ export default function ClassRoomCard({ onClick }: ClassRoomCardProps) {
                 Aula: 101 - Edificio A
               </Typography>
             </Box>
-            
+
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <User size={24} color='#1976d2' style={{ marginRight:'8px'}}/>
               <Typography variant="body2" sx={{ color: '#666' }}>
@@ -55,12 +54,12 @@ export default function ClassRoomCard({ onClick }: ClassRoomCardProps) {
 
             <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 1 }}>
               <BookOpenText size={24} color='#1976d2' style={{ marginRight: '8px', alignSelf: 'flex-start' }} />
-              <Typography 
-                variant="body2" 
-                sx={{ 
-                  color: '#1976d2', 
-                  display: 'inline-block', 
-                  maxWidth: 'calc(100% - 32px)', 
+              <Typography
+                variant="body2"
+                sx={{
+                  color: '#1976d2',
+                  display: 'inline-block',
+                  maxWidth: 'calc(100% - 32px)',
                   wordBreak: 'break-word',
                   whiteSpace: 'normal',
                 }}>
@@ -70,6 +69,6 @@ export default function ClassRoomCard({ onClick }: ClassRoomCardProps) {
           </CardContent>
         </CardActionArea>
       </Card>
-    </Box> 
+    </Box>
   )
 }
