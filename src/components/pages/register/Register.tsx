@@ -69,13 +69,13 @@ export default function Register() {
         sx={{
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center'
+        justifyContent: 'center',mb: '1rem',mt: '1rem'
       }}>
       <Box
         component='img'
         sx={{
-          maxWidth: '80%',
-          height: '60%',
+          maxWidth: '70%',
+          height: 'auto',
           padding: 0,
           margin: 0,
           alignSelf:'center',

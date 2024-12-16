@@ -1,13 +1,11 @@
 import {  Outlet } from 'react-router-dom'
-import SearchBar from '../../ui/SearchBar'
+import Nav from '../../common/Nav'
 
 export default function Main() {
   return (
     <>
-      <h1>Main</h1>
+      <Nav />
       <Outlet />
-      <SearchBar/>
     </>
   )
 }
-
