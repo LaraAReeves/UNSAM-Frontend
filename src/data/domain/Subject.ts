@@ -10,12 +10,14 @@ export class Subject {
     public commission: string
   ) {}
 
-  getCareerNames(): string[] {
-    return this.careers.map(career => career.name)
+  formatCareerNames(): string {
+    const careerNames = this.careers.map(career => career.name)
+    return careerNames.join(', ')
   }
 
-  getProfessorNames(): string[] {
-    return this.proffesors.map(professor => professor.name)
+  formatProfessorNames(): string {
+    const professorNames = this.proffesors.map(professor => professor.name)
+    return professorNames.join(', ')
   }
 
   subjectAndCommission(): string {
