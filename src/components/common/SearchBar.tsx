@@ -25,11 +25,11 @@ export default function SeachBar({ onSearch }:SeachBarProps) {
         sx={{
           '& .MuiOutlinedInput-root': {borderRadius:'4px 0 0 4px',height: '56px',
           '&.Mui-focused fieldset': {borderColor: '#5f83b1'},
-          '& .MuiInputLabel-root': {top: '-8px'} // Ajuste de la etiqueta para que quede centrada verticalmente 
+          '& .MuiInputLabel-root': {top: '-8px'} // Ajuste de la etiqueta para que quede centrada verticalmente
         }}}
         aria-label='Ingresar búsqueda'
       />
-      <IconButton 
+      <IconButton
           sx={{ padding: 1,
             fontSize: 32,
             height: '56px',
@@ -38,8 +38,9 @@ export default function SeachBar({ onSearch }:SeachBarProps) {
             '&:hover': {backgroundColor: '#5f83b1'},
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center', 
+            alignItems: 'center',
            }}
+           color='secondary'
           aria-label="Buscar"
           onClick={handleSearch}>
        <MagnifyingGlass size={32} alt='Lupa'/>
