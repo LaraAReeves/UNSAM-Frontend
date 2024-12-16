@@ -1,5 +1,5 @@
-import { Building } from "./Building"
-import { Subject } from "./Subject"
+import { Building } from './Building'
+import { Subject } from './Subject'
 
 export class Classroom {
   constructor(
