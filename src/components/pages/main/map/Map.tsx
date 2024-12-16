@@ -1,8 +1,7 @@
 import ClassRoomCard from "@/components/common/ClassRoomCard";
 import ClassInfoModal from "@/components/common/Modal";
-import { Box, Button, Divider, IconButton, InputBase, Typography } from "@mui/material";
+import { Box, Button, InputBase, Typography } from "@mui/material";
 import React from "react";
-import { MagnifyingGlass} from '@phosphor-icons/react'
 
 export default function Map() {
 
@@ -14,7 +13,7 @@ export default function Map() {
     classroom: "A9",
     building: "Tornavias",
     teacher: ["Cosme Fulanito","Mr. X"],
-    careers: ["Tecnicatura en Programación Informática", "Tecnicatura en Redes","Diagnóstico por Imágenes"],
+    careers: ["Tecnicatura en Programación Informática", "Tecnicatura en Redes","Diagnóstico por Imágenes","Tecnicatura en Programación Informática"],
     schedules: "08:00 - 10:00"
   }
 
@@ -25,7 +24,7 @@ export default function Map() {
     classroom: "A9",
     building: "Tornavias",
     teacher: ["Cosme Fulanito","Mr. X"],
-    careers: ["Tecnicatura en Programación Informática", "Tecnicatura en Redes","Ciencia de Datos"],
+    careers: ["Tecnicatura en Programación Informática", "Tecnicatura en Redes","Ciencia de Datos","Tecnicatura en Programación Informática",],
     schedules: "08:00 - 10:00"
   }
 
@@ -64,14 +63,11 @@ export default function Map() {
         <>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <InputBase
-              sx={{ ml: 1, flex: 1 }}
-              placeholder='Buscar materia'
-              aria-label='Buscar materia'
+              sx={{ ml: 1, flex: 1 ,fontSize: '22px', padding: '10px 12px'}}
+              placeholder='Buscar fecha'
+              aria-label='Buscar fecha'
+              type="date" 
             />
-            <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-            <IconButton type="button" sx={{ p: '10px' }} aria-label="Buscar">
-              <MagnifyingGlass size={32} alt='Lupa'/>
-            </IconButton>
           </Box>
           <ClassRoomCard onClick={() => {}} 
             className={classData2.className}

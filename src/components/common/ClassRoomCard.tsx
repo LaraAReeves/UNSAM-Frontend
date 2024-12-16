@@ -76,13 +76,14 @@ export default function ClassRoomCard({className,
               </Typography>
             </Box>
 
-            <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 1,flexWrap: 'wrap', }}>
-              <BookOpenText size={24} color='#1976d2' style={{  alignSelf: 'flex-start' }} />
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+              <BookOpenText size={24} color='#1976d2' style={{marginRight: '8px' }} />{/*,alignSelf: 'flex-start'*/}
               <Typography
                 variant="body2"
                 sx={{
                   color: '#1976d2',
-                  maxWidth: 'calc(100% - 32px)',
+                 // maxWidth: 'calc(100% - 32px)',
+                  flex: 1,
                   wordBreak: 'break-word',
                   whiteSpace: 'normal',
                   overflow: 'hidden',
