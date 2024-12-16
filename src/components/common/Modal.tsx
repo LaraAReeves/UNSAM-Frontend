@@ -1,4 +1,4 @@
-import { Modal, Box, Typography, Divider, IconButton } from "@mui/material";
+import { Modal, Box, Typography, Divider, IconButton, Fade } from "@mui/material";
 import React from "react";
 import {X} from '@phosphor-icons/react'
 
@@ -18,22 +18,23 @@ export default function ClassInfoModal({ children, open, handleClose }: ModalPro
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
+      <Fade in={open}>
         <Box sx={{position: 'absolute',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
           width: '90%',
           bgcolor: 'background.paper',
-          border: '2px solid #000',
-          boxShadow: 24,
-          p: 4,}}>
+          boxShadow: 3,
+          p: 4,
+          borderRadius: '24px'}}>
 
           <Box sx={{display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between'}}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
+            <Typography id="modal-modal-title" variant="h6" component="h2" >
               Nombre Aula <br />Tipo Aula
             </Typography>
             <IconButton
-                  aria-label='Cerrar Ventana Emergente' //Kowalski, opciones xp
+                  aria-label='Cerrar Ventana'
                   onClick={handleClose}
                   edge="end">
 
@@ -45,6 +46,7 @@ export default function ClassInfoModal({ children, open, handleClose }: ModalPro
             {children}
           </>
         </Box>
+      </Fade>    
     </Modal>
     
   )

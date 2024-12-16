@@ -23,11 +23,7 @@ export default function Map() {
   return (
     <>
       <Button variant="contained" sx={{mb:4}} onClick={handleOpen}>Mapa</Button>
-      {/*
-      <ClassInfoModal open={open} handleClose={handleClose}>
-        <ClassRoomCard/>
-      </ClassInfoModal> 
-      */}
+   
       <ClassRoomCard onClick={handleOpenCard}/>
 
       <ClassInfoModal open={open} handleClose={handleClose}>

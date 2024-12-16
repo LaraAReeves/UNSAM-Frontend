@@ -1,8 +1,5 @@
-import { CardActionArea, CardContent, Typography, Card, Box, Divider} from "@mui/material";
-
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import PersonIcon from '@mui/icons-material/Person';
+import { CardActionArea, CardContent, Typography, Card, Box, Divider } from "@mui/material";
+import { MapPin,Clock,User,BookOpenText} from '@phosphor-icons/react'
 
 type ClassRoomCardProps = {
   onClick?: () => void  
@@ -16,7 +13,7 @@ export default function ClassRoomCard({ onClick }: ClassRoomCardProps) {
       justifyContent: 'center', 
       alignItems: 'center',
       flexDirection: 'column',
-      mx: 1,p: 1,gap:1
+      mx: 2,p: 2,gap:2
     }}>
 
     <Card sx={{
@@ -36,36 +33,43 @@ export default function ClassRoomCard({ onClick }: ClassRoomCardProps) {
             <Divider sx={{ mb: 2 }} />
 
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-              <LocationOnIcon sx={{ color: '#1976d2', mr: 1 }} />
+              <MapPin size={24} color='#1976d2' style={{ marginRight:'8px'}}/>
               <Typography variant="body2" sx={{ color: '#666' }}>
                 Aula: 101 - Edificio A
               </Typography>
             </Box>
             
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-              <PersonIcon sx={{ color: '#1976d2', mr: 1 }} />
+              <User size={24} color='#1976d2' style={{ marginRight:'8px'}}/>
               <Typography variant="body2" sx={{ color: '#666' }}>
                 Profesor: Cosme Fulanito
               </Typography>
             </Box>
 
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-              <AccessTimeIcon sx={{ color: '#1976d2', mr: 1 }} />
+              <Clock size={24} color='#1976d2' style={{ marginRight:'8px'}}/>
               <Typography variant="body2" sx={{ color: '#666' }}>
                 Horario: 08:00 - 10:00
               </Typography>
             </Box>
 
-            <Typography variant="body2" sx={{ color: '#1976d2' }}>
-              Carreras: Tecnicatura en Programación Informática
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 1 }}>
+              <BookOpenText size={24} color='#1976d2' style={{ marginRight: '8px', alignSelf: 'flex-start' }} />
+              <Typography 
+                variant="body2" 
+                sx={{ 
+                  color: '#1976d2', 
+                  display: 'inline-block', 
+                  maxWidth: 'calc(100% - 32px)', 
+                  wordBreak: 'break-word',
+                  whiteSpace: 'normal',
+                }}>
+                Carreras: Tecnicatura en Programación Informática
+              </Typography>
+            </Box>
           </CardContent>
         </CardActionArea>
       </Card>
-      
-    </Box>
-
-    
+    </Box> 
   )
-
 }
