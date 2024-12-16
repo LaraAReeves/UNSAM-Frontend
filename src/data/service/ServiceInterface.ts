@@ -8,4 +8,6 @@ export interface ServiceInterface {
   post(entity: Entity): Promise<unknown>
 
   put(entity: Entity): Promise<unknown>
+
+  delete(id: number): Promise<unknown>
 }
