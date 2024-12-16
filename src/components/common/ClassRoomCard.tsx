@@ -1,6 +1,7 @@
 import { CardActionArea, CardContent, Typography, Card, Box, Divider } from "@mui/material";
 import { MapPin,Clock,User,BookOpenText} from '@phosphor-icons/react'
 
+
 interface ClassRoomCardProps{
   className : string
   // classroomType : string
@@ -11,6 +12,7 @@ interface ClassRoomCardProps{
   careers : string[]
   schedules : string
   onClick?: () => void
+  viewType: "standard" | "modal"
 }
 
 
@@ -22,8 +24,9 @@ export default function ClassRoomCard({className,
                                       teacher,
                                       careers,
                                       schedules,
-                                      onClick}:ClassRoomCardProps) {
-
+                                      viewType,
+                                      onClick}:ClassRoomCardProps) 
+{                                
   return (
     <Box  sx={{
       display: 'flex',
@@ -48,16 +51,16 @@ export default function ClassRoomCard({className,
             </Typography>
             <Divider sx={{ mb: 2 }} />
 
-            {/* {viewType === "standard" && (
-              <> */}
+            {viewType === "standard" && (
+              <> 
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                   <MapPin size={24} color='#1976d2' style={{ marginRight:'8px'}}/>
                   <Typography variant="body2" sx={{ color: '#666' }}>
                     Aula: {classroom} - Edificio: {building}
                   </Typography>
                 </Box>
-              {/* </>
-            )} */}
+               </>
+            )} 
 
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <User size={24} color='#1976d2' style={{ marginRight:'8px'}}/>
@@ -79,7 +82,6 @@ export default function ClassRoomCard({className,
                 variant="body2"
                 sx={{
                   color: '#1976d2',
-                  // display: 'inline-block',
                   maxWidth: 'calc(100% - 32px)',
                   wordBreak: 'break-word',
                   whiteSpace: 'normal',

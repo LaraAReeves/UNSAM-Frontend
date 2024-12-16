@@ -56,32 +56,34 @@ export default function Map() {
         building={classData.building}
         teacher={classData.teacher}
         careers={classData.careers}
-        schedules={classData.schedules}/>
+        schedules={classData.schedules}
+        viewType="standard"/>
 
       <ClassInfoModal open={open} handleClose={handleClose}>
       {modalContent === "map" ?(
         <>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <InputBase
-            sx={{ ml: 1, flex: 1 }}
-            placeholder='Buscar materia'
-            aria-label='Buscar materia'
-          />
-          <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-          <IconButton type="button" sx={{ p: '10px' }} aria-label="Buscar">
-            <MagnifyingGlass size={32} alt='Lupa'/>
-          </IconButton>
+            <InputBase
+              sx={{ ml: 1, flex: 1 }}
+              placeholder='Buscar materia'
+              aria-label='Buscar materia'
+            />
+            <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+            <IconButton type="button" sx={{ p: '10px' }} aria-label="Buscar">
+              <MagnifyingGlass size={32} alt='Lupa'/>
+            </IconButton>
           </Box>
           <ClassRoomCard onClick={() => {}} 
-              className={classData2.className}
-              // classroomType={classData2.classroomType}
-              commission={classData2.commission}
-              classroom={classData2.classroom}
-              building={classData2.building}
-              teacher={classData2.teacher}
-              careers={classData2.careers}
-              schedules={classData2.schedules}
-              />
+            className={classData2.className}
+            // classroomType={classData2.classroomType}
+            commission={classData2.commission}
+            classroom={classData2.classroom}
+            building={classData2.building}
+            teacher={classData2.teacher}
+            careers={classData2.careers}
+            schedules={classData2.schedules}
+            viewType="modal"
+          />
         </>  
       
         ): modalContent === "card" ? (// Contenido cuando se abre desde el mapa
@@ -89,7 +91,7 @@ export default function Map() {
             <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ display: 'flex', alignItems: 'center',justifyContent: 'center'}}>
               Mapa Torna
             </Typography>
-            <ClassRoomCard onClick={() => {}} 
+            <ClassRoomCard onClick={() => {}} // Hay que desactivar el onClick cuando se esta dentro del modal
               className={classData2.className}
               // classroomType={classData2.classroomType}
               commission={classData2.commission}
@@ -98,7 +100,8 @@ export default function Map() {
               teacher={classData2.teacher}
               careers={classData2.careers}
               schedules={classData2.schedules}
-              /> {/* Hay que desactivar el onClick cuando se esta dentro del modal */}
+              viewType="modal"
+              /> 
           </>
         ): null}
       </ClassInfoModal>
