@@ -17,7 +17,6 @@ interface ClassRoomCardProps{
 
 
 export default function ClassRoomCard({className,
-                                      // classroomType,
                                       commission,
                                       classroom,
                                       building,

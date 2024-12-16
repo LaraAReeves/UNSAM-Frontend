@@ -7,10 +7,12 @@ type ModalProps = {
   children: React.ReactNode  // Permite múltiples hijos de cualquier tipo
   open: boolean             // Propiedad para manejar el estado del Modal
   handleClose: () => void    // Función para cerrar el Modal
+  classroom:string
+  classroomType:string
 }
 
 
-export default function ClassInfoModal({ children, open, handleClose }: ModalProps){
+export default function ClassInfoModal({ children, open, handleClose,classroom,classroomType }: ModalProps){
   return (
     <Modal
         open={open}
@@ -31,7 +33,7 @@ export default function ClassInfoModal({ children, open, handleClose }: ModalPro
 
           <Box sx={{display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between'}}>
             <Typography id="modal-modal-title" variant="h6" component="h2" >
-              Nombre Aula <br />Tipo Aula
+              {classroom} <br /> {classroomType}
             </Typography>
             <IconButton
                   aria-label='Cerrar Ventana'
