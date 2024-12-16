@@ -3,18 +3,18 @@ import { MapPin,Clock,User,BookOpenText} from '@phosphor-icons/react'
 
 interface ClassRoomCardProps{
   className : string
- // classroomType : string
+  // classroomType : string
   commission : string
   classroom : string
   building : string
-  teacher : string    //Tengo mis dudas si dejarlo como una lista o un string
+  teacher : string[]    
   careers : string[]
   schedules : string
 }
 
 
 export default function ClassRoomCard({className,
-                                     // classroomType,
+                                      // classroomType,
                                       commission,
                                       classroom,
                                       building,
@@ -56,7 +56,7 @@ export default function ClassRoomCard({className,
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <User size={24} color='#1976d2' style={{ marginRight:'8px'}}/>
               <Typography variant="body2" sx={{ color: '#666' }}>
-                Profesor: {teacher}
+                Profesor: {teacher.join(' - ')}
               </Typography>
             </Box>
 
