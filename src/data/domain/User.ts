@@ -1,5 +1,8 @@
-export class User {
+import { Entity } from "./Entity"
+
+export class User implements Entity {
   constructor(
+    public id: number,
     public name: string,
     public surname: string,
     public username: string,
