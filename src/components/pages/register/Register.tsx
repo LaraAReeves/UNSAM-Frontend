@@ -55,7 +55,7 @@ export default function Register() {
        del servicio de autenticación, con algún método como RegistrarUsuario,
        pero es una intuición, nunca trabajé con registro.
       */
-      navigate('/login')
+      navigate('/ingresar')
     } catch (error) {
       setError('root', {
         type: 'server',
@@ -261,7 +261,7 @@ export default function Register() {
               { isSubmitting ? "Registrando..." : "Registrarse"}
             </Button>
             <Typography>
-              ¿Ya tenés una cuenta? <Link onClick={() => (navigate('/login'))} tabIndex={0}>Iniciá sesión.</Link>
+              ¿Ya tenés una cuenta? <Link onClick={() => (navigate('/ingresar'))} tabIndex={0}>Iniciá sesión.</Link>
             </Typography>
           </Box>
         </Box>

@@ -48,7 +48,7 @@ export function Welcome() {
             variant="contained"
             color="primary"
             size="large"
-            onClick={() => navigate('/login')}
+            onClick={() => navigate('/ingresar')}
           >
             Iniciá sesión
           </Button>
@@ -56,7 +56,7 @@ export function Welcome() {
             variant="outlined"
             color="primary"
             size="large"
-            onClick={() => navigate('/register')}
+            onClick={() => navigate('/registrar')}
           >
             Registrate
           </Button>

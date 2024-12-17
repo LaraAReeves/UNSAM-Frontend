@@ -10,8 +10,8 @@ import TornaviasSubsuelo from './components/pages/main/map/components/TornaviasS
 import { Search } from './components/pages/main/search/Search'
 
 export const routes: RouteObject[] = [
-  { path: '/login', element: <Login /> },
-  { path: '/register', element: <Register /> },
+  { path: '/ingresar', element: <Login /> },
+  { path: '/registrar', element: <Register /> },
   { path: '/buscar', element: <Search /> },
   {
     path: '/mapa',
@@ -31,7 +31,7 @@ export const routes: RouteObject[] = [
       </ProtectedRoute>
     ),
     children: [
-      { path: 'profile', element: <Profile /> }
+      { path: 'perfil', element: <Profile /> }
     ]
   },
   { path: '*', element: <NotFound /> }

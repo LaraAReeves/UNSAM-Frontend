@@ -16,7 +16,7 @@ export default function Login() {
         console.log('Login Data:', data)
         // Redirigir a la ruta "/"
         login()
-        navigate('/profile')
+        navigate('/perfil')
     }
 
     const handleClickShowPassword = () => setShowPassword((show) => !show)

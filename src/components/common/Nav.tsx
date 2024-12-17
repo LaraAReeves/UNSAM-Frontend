@@ -14,7 +14,7 @@ export default function Nav() {
         <IconButton onClick={() => navigate("/mapa/tornavias-subsuelo")} aria-label='Inicio'>
           <MapTrifold size={32} alt='Mapa' />
         </IconButton>
-        <IconButton onClick={() => navigate("/profile")} aria-label='Perfil'>
+        <IconButton onClick={() => navigate("/perfil")} aria-label='Perfil'>
           <UserCircle size={32} alt='Usuario' />
         </IconButton>
       </Toolbar>
