@@ -27,7 +27,8 @@ let unsamTheme = createTheme({
     dark: {
       palette: {
         primary: {
-          main:'#7DA1C4'
+          main:'#7DA1C4',
+          contrastText: '#FFFFFF'
         },
         secondary:{
           main:'#FFFFFF'
