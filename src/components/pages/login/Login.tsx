@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom'
 import {useAuth} from "../../../context/AuthContext.tsx";
 import { LoginRequest } from '../../../data/domain/User.ts'
 import React from 'react';
-import { EyeSlash,Eye} from '@phosphor-icons/react'
-
+import { EyeSlash,Eye, SignIn, FingerprintSimple} from '@phosphor-icons/react'
+import logoUnsam from '@/assets/logos/logo-unsam-largo.png'
+import './login.css'
 export default function Login() {
     const { control, handleSubmit, formState: { errors } } = useForm<LoginRequest>()
     const { login } = useAuth()
@@ -30,7 +31,7 @@ export default function Login() {
     }
 
     return (
-        <main>
+        <main className='login-page'>
             <Box
                 component="form"
                 onSubmit={handleSubmit(onSubmit)}
@@ -40,10 +41,10 @@ export default function Login() {
                     gap: 2,
                     maxWidth: 400,
                     margin: '0 auto',
-                    mt: 5,
                     p: 3,
                     border: '1px solid #ccc',
                     borderRadius: 2,
+                    backgroundColor: 'white',
                     // Ajustes para pantallas pequeñas (tablet/mobile)
                     '@media (max-width:768px)': {
                         border: 'none',
@@ -51,17 +52,17 @@ export default function Login() {
                 }}
             >
                 <img
-                    src="/src/assets/logos/logo-unsam-largo.png"
+                    src={logoUnsam}
                     alt="Logo UNSAM"
                     style={{width: '100%', marginBottom: '20px'}}
                 />
-                <h1>Login</h1>
+                <h1>Ingresá</h1>
 
                 {/* Email Field */}
                 <Controller
                     name="email"
                     control={control}
-                    defaultValue=""
+                    defaultValue="prueba@unsam.edu.ar"
                     rules={{
                         required: 'Debe ingresar un email',
                         pattern: {
@@ -85,7 +86,7 @@ export default function Login() {
                 <Controller
                     name="password"
                     control={control}
-                    defaultValue=""
+                    defaultValue="prueba@unsam.edu.ar"
                     rules={{
                         required: 'Debe ingresar una contraseña',
                         minLength: {
@@ -133,7 +134,17 @@ export default function Login() {
                     color="primary"
                     fullWidth
                 >
-                    Login
+                   <SignIn size={32} /> Ingresar
+                </Button>
+
+                {/* Register Button */}
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    fullWidth
+                    onClick={() => navigate('/registrar')}
+                >
+                   <FingerprintSimple size={32} /> Registrarse
                 </Button>
             </Box>
         </main>
