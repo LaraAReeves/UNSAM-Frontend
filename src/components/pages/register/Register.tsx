@@ -35,6 +35,7 @@ export default function Register() {
 
   const createAccount = (userData: FormInputs) => {
     const newUser = new User(
+      0,
       userData.name,
       userData.surname,
       userData.username,

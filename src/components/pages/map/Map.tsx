@@ -108,7 +108,7 @@ export default function Map() {
             onChange={(e) => {
               field.onChange(e.target.value) // Actualiza el valor en react-hook-form
               console.log(e.target.value)
-              handleBuildingChange(parseInt(e.target.value)) // Redirige a la ruta
+              handleBuildingChange(parseInt(`${e.target.value}`)) // Redirige a la ruta
             }}
           >
             {buildingData.map((building) => (
@@ -135,7 +135,7 @@ export default function Map() {
               name="levels-group"
               onChange={(e) => {
                 field.onChange(e.target.value) // Actualiza el valor en react-hook-form
-                handleLevelChange(e.target.value) // Redirige a la ruta
+                handleLevelChange(parseInt(`${e.target.value}`)) // Redirige a la ruta
               }}
             >
               {buildingLevels().map((level, index) => (
