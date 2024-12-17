@@ -10,7 +10,6 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     const isAuthenticated = useAuth().isAuthenticated
 
     if (!isAuthenticated) {
-        // Redirige a /welcome si no está autenticado
         return <Navigate to="/ingresar" replace />
     }
 
