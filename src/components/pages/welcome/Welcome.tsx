@@ -42,6 +42,12 @@ export function Welcome() {
       <TransparentContainer padding='1.5rem'>
         <Stack spacing={2} direction='column' width='100%'>
           <Button
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '0.5rem',
+              alignItems: 'center'
+            }}
             variant="contained"
             color="primary"
             size="large"
@@ -50,6 +56,12 @@ export function Welcome() {
             <SignIn size={32} /> Iniciá sesión
           </Button>
           <Button
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '0.5rem',
+              alignItems: 'center'
+            }}
             variant="outlined"
             color="primary"
             size="large"
@@ -58,6 +70,12 @@ export function Welcome() {
             <FingerprintSimple size={32} /> Registrate
           </Button>
           <Button
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '0.5rem',
+              alignItems: 'center'
+            }}
             variant="outlined"
             color="primary"
             size="large"
