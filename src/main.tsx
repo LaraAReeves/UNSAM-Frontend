@@ -28,6 +28,9 @@ let unsamTheme = createTheme({
       palette: {
         primary: {
           main:'#7DA1C4'
+        },
+        secondary:{
+          main:'#FFFFFF'
         }
       }
     }
