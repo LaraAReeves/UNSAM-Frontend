@@ -9,13 +9,13 @@ export default function Nav() {
   return (
     <AppBar position="sticky" color="primary" sx={{ top: 'auto', bottom: 0, height: '10vh', display:'flex', justifyContent:'center', alignItems:'center' }} enableColorOnDark>
       <Toolbar sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%'}}>
-        <IconButton onClick={() => navigate("/buscar")} aria-label='Buscar'>
+        <IconButton onClick={() => navigate("/buscar")} color='secondary' aria-label='Buscar'>
           <MagnifyingGlass size={32} alt='Lupa' />
         </IconButton>
-        <IconButton onClick={() => navigate("/mapa/tornavias-subsuelo")} aria-label='Inicio'>
+        <IconButton onClick={() => navigate("/mapa/tornavias-subsuelo")} color='secondary' aria-label='Inicio'>
           <MapTrifold size={32} alt='Mapa' />
         </IconButton>
-        <IconButton onClick={() => navigate("/perfil")} aria-label='Perfil'>
+        <IconButton onClick={() => navigate("/perfil")} color='secondary' aria-label='Perfil'>
           {isAuthenticated && <UserCircle size={32} alt='Usuario' />}
           {!isAuthenticated && <SignIn size={32} alt='Iniciar Sesión' />}
         </IconButton>
