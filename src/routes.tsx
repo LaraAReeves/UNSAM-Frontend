@@ -8,8 +8,10 @@ import { ProtectedRoute } from "@/components/common/ProtectedRoute.tsx"
 import Profile from '@/components/pages/main/profile/Profile'
 import TornaviasSubsuelo from '@/components/pages/map/components/TornaviasSubsuelo'
 import { Search } from './components/pages/search/Search'
+import { Welcome } from './components/pages/welcome/Welcome'
 
 export const routes: RouteObject[] = [
+  { path: '/', element: <Welcome /> },
   { path: '/ingresar', element: <Login /> },
   { path: '/registrar', element: <Register /> },
   { path: '/buscar', element: <Search /> },
