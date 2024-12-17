@@ -8,7 +8,7 @@ export default function Nav() {
   return (
     <AppBar position="sticky" color="primary" sx={{ top: 'auto', bottom: 0, height: '10vh', display:'flex', justifyContent:'center', alignItems:'center' }} enableColorOnDark>
       <Toolbar sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%'}}>
-        <IconButton onClick={() => navigate("/search")} aria-label='Buscar'>
+        <IconButton onClick={() => navigate("/buscar")} aria-label='Buscar'>
           <MagnifyingGlass size={32} alt='Lupa' />
         </IconButton>
         <IconButton onClick={() => navigate("/mapa/tornavias-subsuelo")} aria-label='Inicio'>
