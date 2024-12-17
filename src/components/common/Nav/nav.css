@@ -14,10 +14,7 @@
     border: none;
     outline: none;
 }
-.footer-nav-bar button:hover svg,
-.footer-nav-bar button:active svg{
-    transform: scale(0.9);
-}
+
 
 .footer-nav-bar .active{
     position: relative;
@@ -34,4 +31,12 @@
 }
 .footer-nav-bar .active svg{
     transform: scale(1.2);
+}
+
+
+@media (min-width: 1024px){
+    .footer-nav-bar button:hover svg,
+    .footer-nav-bar button:active svg{
+        transform: scale(0.9);
+    }
 }
