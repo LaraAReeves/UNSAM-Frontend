@@ -134,7 +134,7 @@ export default function Login() {
                     color="primary"
                     fullWidth
                 >
-                   <SignIn size={32} /> Ingresar
+                   <SignIn size={32} alt='Ingresar' /> Ingresar
                 </Button>
 
                 {/* Register Button */}
@@ -144,7 +144,7 @@ export default function Login() {
                     fullWidth
                     onClick={() => navigate('/registrar')}
                 >
-                   <FingerprintSimple size={32} /> Registrarse
+                   <FingerprintSimple size={32} alt='Registrarse' /> Registrarse
                 </Button>
             </Box>
         </main>

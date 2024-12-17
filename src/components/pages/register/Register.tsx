@@ -263,7 +263,7 @@ export default function Register() {
               sx={{ mt: "1.5rem", mb: "1.5rem" }}
               disabled={isSubmitting}
             >
-              <FingerprintSimple size={32} /> { isSubmitting ? "Registrando..." : "Registrarse"}
+              <FingerprintSimple size={32} alt='Registrarse' /> { isSubmitting ? "Registrando..." : "Registrarse"}
             </Button>
             <Typography>
               ¿Ya tenés una cuenta? <Link onClick={() => (navigate('/ingresar'))} tabIndex={0}>Iniciá sesión.</Link>
