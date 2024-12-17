@@ -22,7 +22,7 @@ export const subsuelo = {
 
 export const tornavias = {
   id: 0,
-  text: 'Tornavias',
+  text: 'Tornavías',
   path: 'mapa/tornavias-planta-baja',
   levels: [
     subsuelo
