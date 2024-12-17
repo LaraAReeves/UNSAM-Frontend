@@ -7,10 +7,12 @@ import NotFound from '@/components/pages/notFound/NotFound'
 import { ProtectedRoute } from "@/components/common/ProtectedRoute.tsx"
 import Profile from '@/components/pages/profile/Profile'
 import TornaviasSubsuelo from './components/pages/main/map/components/TornaviasSubsuelo'
+import { Search } from './components/pages/main/search/Search'
 
 export const routes: RouteObject[] = [
   { path: '/login', element: <Login /> },
   { path: '/register', element: <Register /> },
+  { path: '/buscar', element: <Search /> },
   {
     path: '/mapa',
     element: <Map />,
