@@ -1,7 +1,9 @@
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
 import { TransparentContainer } from '@/components/ui/TransparentContainer'
 import { useNavigate } from 'react-router-dom'
-
+import { CompassRose, FingerprintSimple, SignIn } from '@phosphor-icons/react'
+import logoUnsamBlanco from '@/assets/logos/logo-unsam-blanco.png'
+import fondoTornavias from '@/assets/fondos/fondo-tornavias.jpg'
 export function Welcome() {
   const navigate = useNavigate()
 
@@ -9,20 +11,15 @@ export function Welcome() {
     <Box
       data-testid="welcome-box"
       sx={{
-        height: '100%',
+        height: '90vh',
         width: '100%',
-        backgroundImage:`url('/fondo-tornavias.jpg')`,
+        backgroundImage:`url(${fondoTornavias})`,
         backgroundSize:'cover',
         backgroundPosition:'center',
         display: 'flex',
         flexDirection: 'column',
         justifyContent:'center',
-        gap: '5rem',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0
+        gap: '1rem'
       }}
     >
       <Container
@@ -32,7 +29,7 @@ export function Welcome() {
         }}
       >
         <img
-          src="/logo-unsam-blanco.png"
+          src={logoUnsamBlanco}
           alt="University Logo"
           style={{
             maxWidth: '300px',
@@ -50,7 +47,7 @@ export function Welcome() {
             size="large"
             onClick={() => navigate('/ingresar')}
           >
-            Iniciá sesión
+            <SignIn size={32} /> Iniciá sesión
           </Button>
           <Button
             variant="outlined"
@@ -58,7 +55,15 @@ export function Welcome() {
             size="large"
             onClick={() => navigate('/registrar')}
           >
-            Registrate
+            <FingerprintSimple size={32} /> Registrate
+          </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            size="large"
+            onClick={() => navigate('/mapa/tornavias-subsuelo')}
+          >
+            <CompassRose size={32} /> Navegá el mapa
           </Button>
         </Stack>
       </TransparentContainer>
