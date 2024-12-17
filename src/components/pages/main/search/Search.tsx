@@ -11,7 +11,7 @@ export function Search() {
   return (
     <Box display='flex' flexDirection='column' height='100vh' overflow='hidden'>
       <Box flexShrink='0' paddingTop='2rem'>
-        <Typography variant="h5" fontWeight="bold">Búsqueda</Typography>
+        <Typography variant="h5" fontWeight="bold">BÚSQUEDA</Typography>
         <SearchBar onSearch={() => search()} />
       </Box>
       <Divider variant='middle' flexItem/>
