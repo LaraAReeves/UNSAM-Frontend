@@ -1,12 +1,12 @@
 import { RouteObject } from 'react-router-dom'
 import Login from '@/components/pages/login/Login'
 import Main from '@/components/pages/main/Main'
-import Map from '@/components/pages/main/map/Map'
+import Map from '@/components/pages/map/Map'
 import Register from '@/components/pages/register/Register'
 import NotFound from '@/components/pages/notFound/NotFound'
 import { ProtectedRoute } from "@/components/common/ProtectedRoute.tsx"
-import Profile from '@/components/pages/profile/Profile'
-import TornaviasSubsuelo from './components/pages/main/map/components/TornaviasSubsuelo'
+import Profile from '@/components/pages/main/profile/Profile'
+import TornaviasSubsuelo from '@/components/pages/map/components/TornaviasSubsuelo'
 import { Search } from './components/pages/search/Search'
 
 export const routes: RouteObject[] = [
