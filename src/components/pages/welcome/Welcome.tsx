@@ -89,6 +89,9 @@ export function Welcome() {
         <Typography color="#000000">
         ¡Informate sobre tus materias, aulas y profesores!
         </Typography>
+        <Typography color="#000000" fontWeight={700}>
+        Esto es una versión Beta Mobile
+        </Typography>
       </TransparentContainer>
     </Box>
   )
