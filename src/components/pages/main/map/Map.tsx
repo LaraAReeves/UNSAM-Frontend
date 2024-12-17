@@ -4,64 +4,93 @@ import { Controller, useForm } from "react-hook-form"
 import { Outlet, useNavigate } from "react-router-dom"
 
 import './map.css'
-import ClassInfoModal from "@/components/common/Modal";
-import { Box, Button, InputBase, Typography } from "@mui/material";
+import ClassInfoModal from "@/components/common/Modal"
+import { Box, InputBase, Typography } from "@mui/material"
 
-import React, { useEffect } from "react";
+import { useState } from "react"
+import ClassRoomCard from "@/components/common/ClassRoomCard";
+import { buildingData } from "@/data/mock/BuildingData";
+import { classes, IClass } from "@/data/mock/ClassData"
 
 export default function Map() {
-  const { control, watch } = useForm({
+  const { control, watch, setValue } = useForm({
     defaultValues: {
-      building: '', // Valor inicial, índice del array de componentes
-      level: '' // Valor inicial, índice del array de componentes
+      building:  0, // Valor inicial, índice del array de componentes
+      level: 0 // Valor inicial, índice del array de componentes
     }
   })
   const navigate = useNavigate()
 
    // Observamos los valores seleccionados
-   const selectedBuilding = watch('building')
-   /* const selectedLevel = watch('level') */
+  const selectedBuilding = watch('building')
+  const currentBuilding = buildingData.find((b) => b.id === selectedBuilding)
 
-  const buildings = [
-    {
-      text:'Tornavías',
-      path:'mapa/tornavias-planta-baja',
-      children: [
-        {
-          text: 'Subsuelo',
-          path: 'tornavias-subsuelo',
-        },
-        {
-          text: 'Primer piso',
-          path: 'tornavias-primer-piso',
-        },
-        {
-          text: 'Planta baja',
-          path: 'tornavias-planta-baja',
-        }
-      ]
+  const buildingLevels = () => currentBuilding?.levels || [] // Devuelve niveles o un array vacío si no se encuentra
+
+  const handleLevelChange = (levelId: number) => {
+    const pathToNavigate = `${buildingData[selectedBuilding].levels[levelId].path}`
+    navigate(`/mapa/${pathToNavigate}`)
+  }
+  const handleBuildingChange = (buildingId: number) => {
+    const newBuilding = buildingData.find((b) => b.id === buildingId)
+    setValue("level", 0) // Resetea el nivel al primer valor
+    navigate(`/${newBuilding?.path}`)
+  }
+
+  // Estado para el modal
+  const [classRoomId, setClassRoomId] = useState<null|number>(null)
+  const [open, setOpen] = useState(false)
+  const [date, setDate] = useState(new Date().toISOString().split('T')[0])
+  const [filteredClasses, setFilteredClasses] = useState<IClass[]>([])
+
+  const handleClose = () => {
+    setClassRoomId(null)
+    setOpen(false)
+    console.log('cerrar')
+  }
+
+  const handleOpen = (classRoomId: number) => {
+    const today = new Date().toISOString().split('T')[0]; // Fecha actual en formato ISO
+    setDate(today); // Resetea la fecha seleccionada
+    setOpen(true);
+    setClassRoomId(classRoomId);
+
+    // Filtrar clases por la fecha actual
+    const currentClassRoom = buildingData[selectedBuilding].levels
+      .flatMap((l) => l.classRooms)
+      .find((c) => c.id === classRoomId);
+
+    if (currentClassRoom) {
+      const filtered = classes.filter(
+        (cls) =>
+          cls.classroom === currentClassRoom.classroom &&
+          new Date(cls.startDate) <= new Date(today) &&
+          new Date(cls.endDate) >= new Date(today)
+      );
+      setFilteredClasses(filtered);
     }
-  ]
-
-  const buildingLevels = buildings.find(building => building.path === selectedBuilding)?.children || []
-
-  const handleLevelChange = (path: string) => navigate(`/mapa/${path}`)
-
-  const [open, setOpen] = React.useState(false)
-  const [modalContent, setModalContent] = React.useState<"map" | "card" | null>(null)
-  const [date, setDate] = React.useState(new Date().toISOString().split('T')[0])
-
-  const handleClose = () => setOpen(false)
-
-  const handleOpen = () => {
-    setModalContent("map") //Para que abra el modal correspondiente a botón mapa
-    setOpen(true)
   }
 
-  const handleOpenCard = () => {
-    setModalContent("card") //Para que abra el modal correspondiente a la card
-    setOpen(true)
-  }
+  const findClassRoom = () => buildingData[selectedBuilding].levels.find((l) => l.id === selectedBuilding)?.classRooms.find((c) => c.id === classRoomId)
+
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newDate = e.target.value;
+    setDate(newDate);
+    if (selectedClassRoom()) {
+      // Filtrar las clases por fecha seleccionada
+      const filtered = classes.filter(
+        (cls) =>{
+          console.log(selectedClassRoom())
+          return (cls.classroom === selectedClassRoom()?.classroom &&
+          new Date(cls.startDate) <= new Date(newDate) &&
+          new Date(cls.endDate) >= new Date(newDate))}
+      )
+      console.log(filtered)
+      setFilteredClasses(filtered);
+    }
+  };
+
+  const selectedClassRoom = () => buildingData[selectedBuilding].levels.find((l) => l.id === selectedBuilding)?.classRooms.find((c) => c.id === classRoomId)
 
   return (
     <main className="map-page">
@@ -77,12 +106,13 @@ export default function Map() {
             labelId="building-select-label"
             label="Edificio"
             onChange={(e) => {
-              field.onChange(e) // Actualiza el valor en react-hook-form
-              navigate(`/${e.target.value}`) // Redirige a la ruta seleccionada
+              field.onChange(e.target.value) // Actualiza el valor en react-hook-form
+              console.log(e.target.value)
+              handleBuildingChange(parseInt(e.target.value)) // Redirige a la ruta
             }}
           >
-            {buildings.map((building, index) => (
-              <MenuItem key={index} value={building.path}>
+            {buildingData.map((building) => (
+              <MenuItem key={building.id} value={building.id}>
                 {building.text}
               </MenuItem>
             ))}
@@ -92,7 +122,7 @@ export default function Map() {
     />
 
     {/* RadioGroup de niveles */}
-    {selectedBuilding && (
+    {currentBuilding &&
       <Controller
         name="level"
         control={control}
@@ -104,11 +134,11 @@ export default function Map() {
               aria-labelledby="building-levels-label"
               name="levels-group"
               onChange={(e) => {
-                field.onChange(e) // Actualiza el valor en react-hook-form
+                field.onChange(e.target.value) // Actualiza el valor en react-hook-form
                 handleLevelChange(e.target.value) // Redirige a la ruta
               }}
             >
-              {buildingLevels.map((level, index) => (
+              {buildingLevels().map((level, index) => (
                 <FormControlLabel
                   key={index}
                   value={level.path}
@@ -116,65 +146,66 @@ export default function Map() {
                   label={level.text}
                 />
               ))}
+
             </RadioGroup>
           </FormControl>
         )}
       />
-    )}
+    }
 
     <section className="map-container">
-        <Outlet />
+        <Outlet context={{ handleOpen }} />
     </section>
-    {/* <>
 
-      <ClassInfoModal open={open} handleClose={handleClose} classroom={classData2.classroom} classroomType={classData2.classroomType}>
-      {modalContent === "map" ?(
-        <>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+    {/* Modal */}
+    {classRoomId !== null && (
+        <ClassInfoModal
+          open={open}
+          handleClose={handleClose}
+          classroom={`${findClassRoom()?.classroom}`}
+          classroomType="Aula"
+        >
+          <Box>
             <InputBase
-              sx={{ ml: 1, flex: 1 ,fontSize: '22px', padding: '10px 12px',
-                '&:focus': {
-                  borderColor: '#3f51b5',  // Cambio de color de borde cuando el input está en foco
-                  boxShadow: '#7072bb', // Sombra en foco
-                },}}
-              aria-label='Buscar fecha'
               type="date"
               value={date}
-              onChange={(e) => setDate(e.target.value)}
+              onChange={handleDateChange}
+              sx={{
+                width: "100%",
+                border: "1px solid #ccc",
+                borderRadius: 1,
+                p: 1,
+                mb: 2,
+              }}
             />
+
+
+            {filteredClasses.length > 0 ? (
+              <section className="classes-container">
+              {
+                filteredClasses.map((cls, index) => (
+                  <ClassRoomCard
+                    key={index}
+                    name={cls.name}
+                    commission={cls.commission}
+                    classroom={cls.classroom}
+                    building={cls.building}
+                    teacher={cls.teacher}
+                    careers={cls.careers}
+                    schedules={cls.schedules}
+                    viewType="modal"
+                    onClick={() => {}} // Aquí puedes agregar una acción al hacer clic
+                  />
+                ))
+              }
+                </section>
+
+            ) : (
+              <Typography variant="body2">No hay clases en la fecha seleccionada.</Typography>
+            )}
           </Box>
-          <ClassRoomCard onClick={() => {}}
-            className={classData2.className}
-            commission={classData2.commission}
-            classroom={classData2.classroom}
-            building={classData2.building}
-            teacher={classData2.teacher}
-            careers={classData2.careers}
-            schedules={classData2.schedules}
-            viewType="modal"
-          />
-        </>
-
-        ): modalContent === "card" ? (// Contenido cuando se abre desde el mapa
-          <>
-            <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ display: 'flex', alignItems: 'center',justifyContent: 'center'}}>
-              Mapa {classData.building}
-            </Typography>
-            <ClassRoomCard onClick={() => {}} // Hay que desactivar el onClick cuando se esta dentro del modal
-              className={classData.className}
-              commission={classData.commission}
-              classroom={classData.classroom}
-              building={classData.building}
-              teacher={classData.teacher}
-              careers={classData.careers}
-              schedules={classData.schedules}
-              viewType="modal"
-              />
-          </>
-        ): null}
-      </ClassInfoModal>
-
-    </> */}
+        </ClassInfoModal>
+      )}
   </main>
   )
 }

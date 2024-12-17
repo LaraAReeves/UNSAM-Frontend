@@ -19,16 +19,34 @@
 }
 
 /* BuildingMap.css */
-path {
+svg path,
+svg text {
     /* fill: #ddd; */
     cursor: pointer;
 }
 
-path:hover {
+.classRoom path:hover {
     fill: #aaa;
 }
 
-.selected {
+/* .selected {
     fill: #ff5722;
-}
+} */
 
+.classes-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+/* .classRoom.selected{
+    transform-origin: center center;
+    transform: scale(1.1);
+} */
+.classRoom.selected text{
+    font-size: 2rem;
+}
+.classRoom.selected path {
+    stroke-width: 2px; /* Aumenta el borde */
+    stroke: #8f8e4c; /* Cambia color del borde */
+    fill: #bbbd4d;
+}
