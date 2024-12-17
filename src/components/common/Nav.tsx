@@ -16,7 +16,7 @@ export default function Nav() {
           <MapTrifold size={32} alt='Mapa' />
         </IconButton>
         <Box sx={{ flexGrow: 1 }} />
-        <IconButton /* onClick={() => navigate("/search")} */ color="secondary" aria-label='Buscar'>
+        <IconButton onClick={() => navigate("/search")} color="secondary" aria-label='Buscar'>
           <MagnifyingGlass size={32} alt='Lupa' />
         </IconButton>
       </Toolbar>
