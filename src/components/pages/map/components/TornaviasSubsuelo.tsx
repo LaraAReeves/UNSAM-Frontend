@@ -117,6 +117,9 @@ export default function TornaviasSubsuelo({ selectedClassRoomId, onClassRoomClic
         {/* Baños */}
         <g transform="translate(.000001 0)">
             <path d="M374.849922,568.218955c-10.749453.78454-32.279669.999543-43.060431.435108l-4.526401,54.915969c13.249275,1.059387,39.086713.957775,51.706554-.440808l-4.119722-54.910269Z" transform="translate(.000001 0.000001)" fill="#b9bdc0" stroke="#b9bdc0" stroke-width="1.396"/>
+            <text dx="0" dy="0" font-family="&quot;eBHsLTiXjpU1:::Roboto&quot;" font-size="5" font-weight="400" transform="translate(345.673075 592.013135)" stroke-width="0">
+                <tspan y="0" font-weight="700" stroke-width="0">Baños</tspan>
+            </text>
         </g>
 </svg>
 
