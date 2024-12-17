@@ -6,7 +6,7 @@ import '@fontsource/roboto/700.css'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline'
 import { AuthProvider } from "@/context/AuthContext.tsx"
-import Nav from './components/common/Nav'
+import Nav from './components/common/Nav/Nav'
 import { routes } from '@/routes'
 
 function App() {
