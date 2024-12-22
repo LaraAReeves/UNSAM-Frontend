@@ -2,11 +2,11 @@ import { Box, IconButton, TextField} from "@mui/material"
 import { useState } from "react"
 import { MagnifyingGlass} from '@phosphor-icons/react'
 
-interface SeachBarProps {
+interface SearchBarProps {
   onSearch: (query: string) => void
 }
 
-export default function SeachBar({ onSearch }:SeachBarProps) {
+export default function SearchBar({ onSearch }:SearchBarProps) {
   const [query, setQuery] = useState('')
 
   const handleSearch = () => {
