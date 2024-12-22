@@ -57,7 +57,8 @@ export function Search() {
       <Divider variant='middle' flexItem/>
       <Box sx={{overflowY: 'auto', display: 'flex', flexDirection:'column', gap: '1rem'}} padding='2rem'>
         {
-          classes.map((c: IClass) => (
+          searchResults.length > 0 ? (
+          searchResults.map((c: IClass) => (
             <ClassRoomCard
               key={c.id}
               name={c.name}
@@ -70,7 +71,9 @@ export function Search() {
               viewType={c.viewType}
               onClick={() => handleOpen(c)}
             />
-          ))
+          ))) : (
+            <Typography variant="body1">No se encontraron resultados.</Typography> // Mensaje cuando no hay resultados
+          )
         }
 
       </Box>
