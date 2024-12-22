@@ -21,13 +21,21 @@ export function Search() {
     setSelectedClass(null)
     setOpen(false)
   }
+
+// Elimina tildes y acentos
+  const normalizeString = (str: string) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") 
+  }
+
   const handleSearch = (query: string) => {
+    const normalizedQuery = normalizeString(query.toLowerCase())
+
     const filteredClasses = classes.filter((classItem) => {
       return (
-        classItem.name.toLowerCase().includes(query.toLowerCase()) ||
-        classItem.commission.toLowerCase().includes(query.toLowerCase()) ||
-        classItem.teacher.some(teacher=> teacher.toLowerCase().includes(query.toLowerCase()))||
-        classItem.careers.some(career => career.toLowerCase().includes(query.toLowerCase()))
+        normalizeString(classItem.name.toLowerCase()).includes(normalizedQuery) ||
+        normalizeString(classItem.commission.toLowerCase()).includes(normalizedQuery) ||
+        classItem.teacher.some(teacher=> normalizeString(teacher.toLowerCase()).includes(normalizedQuery))||
+        classItem.careers.some(career => normalizeString(career.toLowerCase()).includes(normalizedQuery))
       )
     })
 
