@@ -8,9 +8,9 @@ import ClassInfoModal from "@/components/common/Modal"
 import './search.css'
 
 export function Search() {
-
   const [selectedClass, setSelectedClass] = useState<IClass | null>(null)
   const [open, setOpen] = useState(false)
+  const [searchResults, setSearchResults] = useState<IClass[]>(classes)
 
   const handleOpen = (classData: IClass) => {
     setSelectedClass(classData)
@@ -21,8 +21,19 @@ export function Search() {
     setSelectedClass(null)
     setOpen(false)
   }
-  const search = () => {
-    console.log('Result')
+  const handleSearch = (query: string) => {
+    const filteredClasses = classes.filter((classItem) => {
+      return (
+        classItem.name.toLowerCase().includes(query.toLowerCase()) ||
+        classItem.commission.toLowerCase().includes(query.toLowerCase()) ||
+        classItem.teacher.some(teacher=> teacher.toLowerCase().includes(query.toLowerCase()))||
+        classItem.careers.some(career => career.toLowerCase().includes(query.toLowerCase()))
+      )
+    })
+
+    setSearchResults(filteredClasses)
+    console.log('Busqueda:',query)
+    console.log(filteredClasses)
   }
 
   // Mapeo entre IDs y clases
@@ -33,7 +44,7 @@ export function Search() {
     <Box display='flex' flexDirection='column' height='100vh' overflow='hidden'>
       <Box flexShrink='0' paddingTop='2rem'>
         <Typography variant="h5" fontWeight="bold">Búsqueda</Typography>
-        <SearchBar onSearch={() => search()} />
+        <SearchBar onSearch={handleSearch} />
       </Box>
       <Divider variant='middle' flexItem/>
       <Box sx={{overflowY: 'auto', display: 'flex', flexDirection:'column', gap: '1rem'}} padding='2rem'>
