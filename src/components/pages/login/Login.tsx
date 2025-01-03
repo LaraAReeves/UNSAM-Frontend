@@ -73,6 +73,7 @@ export default function Login() {
                         {...field}
                         label="Email"
                         variant="outlined"
+                        placeholder='example@gmail.com'
                         error={!!errors.email}
                         helperText={errors.email?.message ? String(errors.email?.message) : ''}
                         fullWidth

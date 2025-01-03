@@ -193,6 +193,7 @@ export default function Register() {
                   aria-label="Email"
                   aria-required='true'
                   aria-describedby='email-helper-text'
+                  placeholder='example@gmail.com'
                 />
               )}
             />
