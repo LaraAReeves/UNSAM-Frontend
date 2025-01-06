@@ -1,7 +1,8 @@
 import { Autocomplete, Box, Divider, IconButton, InputAdornment, TextField} from "@mui/material"
 import { useState } from "react"
 import { MagnifyingGlass} from '@phosphor-icons/react'
-import subjects from "@/data/mock/Subjects"
+import { classes } from "@/data/mock/ClassData"
+
 
 interface SearchBarProps {
   onSearch: (query: string) => void
@@ -14,14 +15,19 @@ export default function SearchBar({ onSearch }:SearchBarProps) {
     onSearch(query)
   }
 
+  const handleChange = (newValue: string | null) => {
+    setQuery(newValue || '')
+  }
+
   return (
     <Box  sx={{ display: 'flex', alignItems: 'center', mx: 2,p: 2,}}>
       <Autocomplete
         freeSolo
         id="filled-hidden-label-normal"
         disableClearable
-        fullWidth
-        options={subjects.map((option) => option.subject)}
+        fullWidth 
+        onChange={(_, newValue) => handleChange(newValue)}
+        options={classes.map((classItem) => classItem.name)}
         renderInput={(params) => (
           <TextField
             {...params}
