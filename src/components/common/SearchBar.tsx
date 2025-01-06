@@ -15,18 +15,24 @@ export default function SearchBar({ onSearch }:SearchBarProps) {
     onSearch(query)
   }
 
-  const handleChange = (newValue: string | null) => {
-    setQuery(newValue || '')
+  // const handleChange = (newValue: string | null) => {
+  //   setQuery(newValue || '')
+  // }
+
+  const handleInputChange = (event: React.SyntheticEvent, newInputValue: string) => {
+    setQuery(newInputValue)
   }
 
   return (
     <Box  sx={{ display: 'flex', alignItems: 'center', mx: 2,p: 2,}}>
       <Autocomplete
         freeSolo
-        id="filled-hidden-label-normal"
+        id="search-autocomplete"
         disableClearable
         fullWidth 
-        onChange={(_, newValue) => handleChange(newValue)}
+        value={query}
+        // onChange={(_, newValue) => handleChange(newValue)}
+        onInputChange={handleInputChange}
         options={classes.map((classItem) => classItem.name)}
         renderInput={(params) => (
           <TextField
