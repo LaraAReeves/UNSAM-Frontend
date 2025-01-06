@@ -10,17 +10,21 @@ interface SearchBarProps {
 
 export default function SearchBar({ onSearch }:SearchBarProps) {
   const [query, setQuery] = useState('')
+  const [open, setOpen] = useState(false)
 
   const handleSearch = () => {
     onSearch(query)
   }
 
-  // const handleChange = (newValue: string | null) => {
-  //   setQuery(newValue || '')
-  // }
-
-  const handleInputChange = (event: React.SyntheticEvent, newInputValue: string) => {
+  const handleInputChange = (_: React.SyntheticEvent, newInputValue: string) => {
     setQuery(newInputValue)
+  }
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      handleSearch()
+      setOpen(false)
+    }
   }
 
   return (
@@ -31,13 +35,17 @@ export default function SearchBar({ onSearch }:SearchBarProps) {
         disableClearable
         fullWidth 
         value={query}
-        // onChange={(_, newValue) => handleChange(newValue)}
         onInputChange={handleInputChange}
+        //Control de la lista desplegable
+        open={open}
+        onOpen={() => setOpen(true)} 
+        onClose={() => setOpen(false)}
         options={classes.map((classItem) => classItem.name)}
         renderInput={(params) => (
           <TextField
             {...params}
             label='Clase / Comisión / Profesor / Carrera'
+            onKeyDown={handleKeyDown}
             slotProps={{
               input: {
                 ...params.InputProps,
@@ -67,5 +75,4 @@ export default function SearchBar({ onSearch }:SearchBarProps) {
       />
     </Box>
   )
-
 }
