@@ -27,6 +27,9 @@ export default function SearchBar({ onSearch }:SearchBarProps) {
     }
   }
 
+  //Ordenar la lista desplegable en orden alfabético
+  const sortedClasses = classes.map((classItem) => classItem.name).sort((a, b) => a.localeCompare(b))
+
   return (
     <Box  sx={{ display: 'flex', alignItems: 'center', mx: 2,p: 2,}}>
       <Autocomplete
@@ -40,7 +43,7 @@ export default function SearchBar({ onSearch }:SearchBarProps) {
         open={open}
         onOpen={() => setOpen(true)} 
         onClose={() => setOpen(false)}
-        options={classes.map((classItem) => classItem.name)}
+        options={sortedClasses}
         renderInput={(params) => (
           <TextField
             {...params}
