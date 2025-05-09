@@ -1,12 +1,11 @@
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-  TextField
-} from '@mui/material'
-import { FloppyDisk } from '@phosphor-icons/react'
+
+import Button from '@mui/material/Button/Button'
+import Dialog from '@mui/material/Dialog/Dialog'
+import DialogActions from '@mui/material/DialogActions/DialogActions'
+import DialogContent from '@mui/material/DialogContent/DialogContent'
+import DialogTitle from '@mui/material/DialogTitle/DialogTitle'
+import TextField from '@mui/material/TextField/TextField'
+import { FloppyDisk } from '@phosphor-icons/react/dist/ssr/FloppyDisk'
 import { GraduationCap } from '@phosphor-icons/react/dist/ssr/GraduationCap'
 import { XSquare } from '@phosphor-icons/react/dist/ssr/XSquare'
 import { useEffect, useState } from 'react'

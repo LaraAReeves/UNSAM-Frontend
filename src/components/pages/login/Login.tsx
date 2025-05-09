@@ -1,27 +1,28 @@
 import { MouseEvent } from 'react'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
-import {
-  TextField,
-  Button,
-  Box,
-  FormControl,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  FormHelperText
-} from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../context/AuthContext.tsx'
 import { LoginRequest } from '../../../data/domain/User.ts'
 import { useEffect, useState } from 'react'
-import { EyeSlash, Eye, SignIn, FingerprintSimple } from '@phosphor-icons/react'
 import logoUnsam from '@/assets/logos/logo-unsam-largo.png'
 import './login.css'
 import '../background-image.css'
 import SectionTitle from '@/components/common/SectionTitle.tsx'
 import { useNotification } from '@/context/NotificationContext.tsx'
 import { useLoader } from '@/context/LoaderContext.tsx'
+import { EyeSlash } from '@phosphor-icons/react/dist/icons/EyeSlash'
+import { Eye } from '@phosphor-icons/react/dist/icons/Eye'
+import { SignIn } from '@phosphor-icons/react/dist/icons/SignIn'
+import { FingerprintSimple } from '@phosphor-icons/react/dist/icons/FingerprintSimple'
+import Box from '@mui/material/Box/Box'
+import TextField from '@mui/material/TextField/TextField'
+import FormControl from '@mui/material/FormControl/FormControl'
+import InputLabel from '@mui/material/InputLabel/InputLabel'
+import OutlinedInput from '@mui/material/OutlinedInput/OutlinedInput'
+import InputAdornment from '@mui/material/InputAdornment/InputAdornment'
+import IconButton from '@mui/material/IconButton/IconButton'
+import FormHelperText from '@mui/material/FormHelperText/FormHelperText'
+import Button from '@mui/material/Button/Button'
 
 export default function Login() {
   const {

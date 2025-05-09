@@ -7,28 +7,26 @@ import { useAuth } from '@/context/AuthContext'
 import { ICourseList } from '@/data/domain/Course'
 import { IEventList } from '@/data/domain/Event'
 import { ISchedule } from '@/data/domain/Schedule'
+import Box from '@mui/material/Box/Box'
+import Card from '@mui/material/Card/Card'
+import CardActionArea from '@mui/material/CardActionArea/CardActionArea'
+import CardContent from '@mui/material/CardContent/CardContent'
+import Divider from '@mui/material/Divider/Divider'
+import IconButton from '@mui/material/IconButton/IconButton'
+import Tooltip from '@mui/material/Tooltip/Tooltip'
+import Typography from '@mui/material/Typography/Typography'
 
 // MUI
-import {
-  CardActionArea,
-  CardContent,
-  Typography,
-  Card,
-  Box,
-  Divider,
-  Tooltip,
-  IconButton
-} from '@mui/material'
-import {
-  MapPin,
-  Clock,
-  User,
-  BookOpenText,
-  Building,
-  Laptop,
-  ArrowsClockwise,
-  PencilSimple
-} from '@phosphor-icons/react'
+
+import { ArrowsClockwise } from '@phosphor-icons/react/dist/icons/ArrowsClockwise'
+import { BookOpenText } from '@phosphor-icons/react/dist/icons/BookOpenText'
+import { Building } from '@phosphor-icons/react/dist/icons/Building'
+import { Clock } from '@phosphor-icons/react/dist/icons/Clock'
+import { Laptop } from '@phosphor-icons/react/dist/icons/Laptop'
+import { MapPin } from '@phosphor-icons/react/dist/icons/MapPin'
+import { PencilSimple } from '@phosphor-icons/react/dist/icons/PencilSimple'
+import { User } from '@phosphor-icons/react/dist/icons/User'
+
 import { useNavigate } from 'react-router-dom'
 
 interface ClassRoomCardProps {

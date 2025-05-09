@@ -8,7 +8,6 @@ import MapSelector from '@/components/common/map/MapSelector'
 import ClassRoomCard from '@/components/common/ClassRoomCard/ClassRoomCard'
 
 // Material UI
-import { Box, Tabs, Tab, Typography, IconButton } from '@mui/material'
 import { PencilSimple } from '@phosphor-icons/react/dist/ssr/PencilSimple'
 import { Laptop } from '@phosphor-icons/react/dist/icons/Laptop'
 
@@ -20,7 +19,13 @@ import { IEvent } from '@/data/domain/Event'
 import '../pages/search/search.css'
 
 // Utils
-import { format, parseISO } from 'date-fns'
+import { parseISO } from 'date-fns/parseISO'
+import { format } from 'date-fns/format'
+import Box from '@mui/material/Box/Box'
+import Typography from '@mui/material/Typography/Typography'
+import IconButton from '@mui/material/IconButton/IconButton'
+import Tabs from '@mui/material/Tabs/Tabs'
+import Tab from '@mui/material/Tab/Tab'
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -110,8 +115,10 @@ export default function EventTabs({ events }: { events: IEvent[] }) {
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <Tabs
                 value={activeTab}
-                onChange={(e, newValue) =>
+                onChange={(e, newValue) =>{
+                  console.log(e)
                   handleTabChange(event.id ?? '', newValue)
+                }
                 }
                 variant="fullWidth"
               >
